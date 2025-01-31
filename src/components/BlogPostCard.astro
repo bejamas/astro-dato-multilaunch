@@ -1,0 +1,31 @@
+---
+import { Image } from '@datocms/astro';
+const { blogPost } = Astro.props;
+---
+
+<article class="h-full flex flex-col border border-border hover:border-white p-4">
+  {blogPost.featuredImage && (
+    <Image
+      data={blogPost.featuredImage.responsiveImage}
+      pictureClass="w-full mb-4"
+    />
+  )}
+  <h3 class="text-xl font-semibold mb-2">
+    <a 
+    href={`/blog/${blogPost.slug}`} 
+    class="inline-block py-2"
+  >
+    {blogPost.title}
+  </a>
+  </h3>
+  {blogPost.excerpt && <p class="text-muted-foreground mb-4">{blogPost.excerpt}</p>}
+  {blogPost.categories && blogPost.categories.length > 0 && (
+    <ul class="flex flex-wrap gap-2 mb-4">
+      {blogPost.categories.map(category => (
+        <li class="bg-muted text-muted-foreground px-3 py-1 text-sm">
+          <a href={`/categories/${category.slug}`}>{category.title}</a>
+        </li>
+      ))}
+    </ul>
+  )}    
+</article>

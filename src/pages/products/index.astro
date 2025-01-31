@@ -1,0 +1,51 @@
+---
+import { queryCMS } from '../../lib/cms';
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+const query = `
+  query {
+    allProducts {
+      id
+      title
+      slug
+      categories {
+        title
+        slug
+      }
+      media {
+        responsiveImage(imgixParams: { fit: max, auto: format }) {
+          src
+          width
+          height
+          alt
+          title
+          base64
+        }
+      }
+    }
+    productList {   
+      title   
+      _seoMetaTags {
+        tag
+        attributes
+        content
+      }           
+    } 
+  }
+`;
+
+const { allProducts, productList } = await queryCMS(query);
+
+---
+
+<Layout additionalSeo={productList._seoMetaTags}>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8 uppercase bg-foreground text-background inline-block p-4">{productList.title}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {allProducts.map((product) => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+  </div>
+</Layout>

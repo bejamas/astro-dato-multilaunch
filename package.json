@@ -1,0 +1,19 @@
+{
+  "name": "astro-dato-beverse",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^8.0.2",
+    "@datocms/astro": "^0.4.1",
+    "@datocms/cda-client": "^0.2.5",
+    "@tailwindcss/vite": "^4.0.1",
+    "astro": "^5.2.1",
+    "tailwindcss": "^4.0.1"
+  }
+}

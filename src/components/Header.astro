@@ -1,0 +1,23 @@
+---
+const navItems = [
+  { href: '/', text: 'Home' },
+  { href: '/products', text: 'Products' },
+  { href: '/blog', text: 'Blog' },
+  { href: '/about', text: 'About' },
+];
+---
+
+<header>
+  <nav>
+    <a href="/"></a>
+    <ul>
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href}>
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

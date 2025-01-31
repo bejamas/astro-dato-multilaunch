@@ -1,0 +1,38 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { queryCMS } from '../lib/cms';
+import { Seo } from '@datocms/astro';
+import '../styles/global.css';
+
+const query = `
+  query {
+    _site {
+      faviconMetaTags {
+        attributes
+        content
+        tag
+      }
+    }
+  }
+`;
+
+const { _site } = await queryCMS(query);
+const { additionalSeo } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Seo data={[..._site.faviconMetaTags, ...additionalSeo]} />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

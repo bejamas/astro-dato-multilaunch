@@ -1,0 +1,19 @@
+---
+import { queryCMS } from '../lib/cms';
+
+const query = `
+  query {
+    _site {
+      globalSeo {
+        siteName
+      }
+    }
+  }
+`;
+
+const { _site } = await queryCMS(query);
+---
+
+<footer>
+  <p class="text-xl">&copy; {new Date().getFullYear()} {_site.globalSeo.siteName}. All rights reserved.</p>
+</footer>

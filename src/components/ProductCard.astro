@@ -1,0 +1,19 @@
+---
+import { Image } from '@datocms/astro';
+const { product } = Astro.props;
+---
+
+<article>
+  {product.images && product.images[0] && (
+    <Image
+      data={product.images[0].responsiveImage}
+      pictureClass="w-full"
+    />
+  )}
+  <h3>
+    <a href={`/products/${product.slug}`}>
+    {product.name}
+    </a>
+  </h3>
+  {product.description && <p>{product.description}</p>} 
+</article>

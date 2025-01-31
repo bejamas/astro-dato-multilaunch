@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { queryCMS } from '../../lib/cms';
+import { StructuredText } from '@datocms/astro';
+import { Image } from '@datocms/astro';
+import TestimonialShowcase from '../../components/TestimonialShowcase.astro';
+import ImageBlock from '../../components/blocks/Image.astro';
+import Cta from '../../components/blocks/Cta.astro';
+
+export async function getStaticPaths() {
+  const allProductsQuery = `
+    query {
+      allProducts {
+        slug
+      }
+    }
+  `;
+  const { allProducts } = await queryCMS(allProductsQuery);
+  return allProducts.map(product => ({ params: { slug: product.slug } }));
+}
+
+const { slug } = Astro.params;
+
+const query = `
+  query GetProductBySlug($slug: String) {
+    product(filter: { slug: { eq: $slug } }) {
+      title
+      content {
+        value
+        blocks {
+          ... on RecordInterface {
+            id
+            __typename
+          }
+          ... on ImageRecord {
+            image {
+              url
+              alt
+            }
+          }
+          ... on CtaRecord {
+            label
+            href
+          }
+        }
+      }
+      relatedProducts {
+        title
+        slug
+      }
+      media {
+        responsiveImage(imgixParams: { fit: max, auto: format }) {
+          src
+          width
+          height
+          alt
+          title
+          base64
+        }
+      }
+      categories {
+        title
+        slug
+      }
+      _seoMetaTags {
+        tag
+        attributes
+        content
+      }           
+    }
+  }
+`;
+
+const variables = { slug };
+const { product } = await queryCMS(query, variables);
+
+if (!product) {
+  return Astro.redirect('/404');
+}
+
+---
+
+<Layout additionalSeo={product._seoMetaTags}>
+  <div class="container mx-auto px-4 py-8">
+
+    <h1 class="text-4xl font-bold mb-6 uppercase bg-foreground text-background inline-block p-4">{product.title}</h1>
+    
+    {product.media && product.media.length > 0 && (
+      <Image
+        data={product.media[0].responsiveImage}
+        pictureClass="w-full mb-4 mb-6 border border-border"
+      />          
+    )}
+    
+    <div class="prose prose-invert max-w-none mb-8">
+      <StructuredText
+        data={product.content}
+        blockComponents={
+         {
+           ImageRecord: ImageBlock,
+           CtaRecord: Cta
+         }}
+      />
+    </div>
+    
+    {product.categories && product.categories.length > 0 && (
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4 uppercase bg-foreground text-background inline-block p-2">Categories</h2>
+        <ul class="flex flex-wrap gap-2">
+          {product.categories.map(category => (
+            <li class="bg-muted text-muted-foreground px-3 py-1">
+              <a href={`/categories/${category.slug}`}>{category.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    {product.relatedProducts && product.relatedProducts.length > 0 && (
+      <div>
+        <h2 class="text-2xl font-semibold mb-4 uppercase bg-foreground text-background inline-block p-2">Related Products</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {product.relatedProducts.map(relatedProduct => (
+            <li class="border border-border p-4">
+              <a href={`/products/${relatedProduct.slug}`} class="text-lg font-medium hover:text-primary">
+                {relatedProduct.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+  <div class="container mx-auto px-4 py-8">
+    <section class="border-t border-border pt-12">
+      <TestimonialShowcase />
+    </section>
+  </div>
+</Layout>
