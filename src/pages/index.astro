@@ -9,7 +9,8 @@ const query = `
     allProducts(first: 3, orderBy: _createdAt_DESC) {
       id
       name
-      slug     
+      slug
+      productType 
       images {
         responsiveImage(imgixParams: { fit: max, auto: format }) {
           src
@@ -21,7 +22,7 @@ const query = `
         }
       }
     }
-    homepage {
+    home {
       _seoMetaTags {
         tag
         attributes
@@ -31,10 +32,10 @@ const query = `
   }
 `;
 
-const { allProducts, homepage } = await queryCMS(query);
+const { allProducts, home } = await queryCMS(query);
 ---
 
-<Layout additionalSeo={homepage._seoMetaTags}>
+<Layout additionalSeo={home._seoMetaTags}>
   <div class="container mx-auto px-4 py-8">
 
     <section class="mb-16">

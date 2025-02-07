@@ -10,6 +10,7 @@ const { product } = Astro.props;
       pictureClass="w-full"
     />
   )}
+  <span>{product.productType}</span>
   <h3>
     <a href={`/products/${product.slug}`}>
     {product.name}
