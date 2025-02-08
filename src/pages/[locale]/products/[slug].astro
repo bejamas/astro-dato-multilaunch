@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { queryCMS } from '../../lib/cms';
+import Layout from '../../../layouts/Layout.astro';
+import queryCMS from '../../../lib/cms';
 import { StructuredText } from '@datocms/astro';
 import { Image } from '@datocms/astro';
-import ImageBlock from '../../components/blocks/Image.astro';
+import ImageBlock from '../../../components/blocks/Image.astro';
 
 export async function getStaticPaths() {
   const allProductsQuery = `

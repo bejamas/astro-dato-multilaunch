@@ -1,6 +1,6 @@
 import { executeQuery } from '@datocms/cda-client';
 
-export async function queryCMS(query, variables = {}) {
+export default async function queryCMS(query, variables = {}) {
   const token = import.meta.env.DATOCMS_API_TOKEN;
 
   if (!token) {
