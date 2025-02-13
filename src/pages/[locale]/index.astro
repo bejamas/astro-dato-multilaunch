@@ -6,17 +6,18 @@ import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import ProductCard from '../../components/ProductCard.astro';
 
 export async function getStaticPaths() {
-  const availableLocales = await getAvailableLocales();
+  const availableLocales = await getAvailableLocales();  
   return availableLocales.map(locale => ({
     params: { locale }
   }));
 }
 
+const fallbackLocale = await getFallbackLocale();
 const { locale } = Astro.params;
 
 const query = `
-  query($locale: SiteLocale) {
-    allProducts(locale: $locale, first: 3, orderBy: _createdAt_DESC) {
+  query($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+    allProducts(locale: $locale, fallbackLocales: $fallbackLocale, first: 3, orderBy: _createdAt_DESC) {
       id
       name
       slug
@@ -42,7 +43,7 @@ const query = `
   }
 `;
 
-const { allProducts, home } = await queryCMS(query, { locale });
+const { allProducts, home } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
 <Layout additionalSeo={home._seoMetaTags}>

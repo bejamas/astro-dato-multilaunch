@@ -31,12 +31,12 @@ export async function getStaticPaths() {
   return paths;
 }
 
+const fallbackLocale = await getFallbackLocale();
 const { locale, slug } = Astro.params;
 
-
 const query = `
-  query GetProductBySlug($locale: SiteLocale, $slug: String) {
-    product(locale: $locale, filter: { slug: { eq: $slug } }) {
+  query GetProductBySlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
+    product(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
       name
       productType
       description {
@@ -73,7 +73,7 @@ const query = `
   }
 `;
 
-const { product } = await queryCMS(query, { slug, locale });
+const { product } = await queryCMS(query, { slug, locale, fallbackLocale });
 
 if (!product) {
   return Astro.redirect('/404');
@@ -84,7 +84,8 @@ if (!product) {
 <Layout additionalSeo={product._seoMetaTags}>
   <div class="container mx-auto px-4 py-8">
 
-    <h1 class="text-4xl font-bold mb-6 uppercase bg-foreground text-background inline-block p-4">{product.title}</h1>
+    <h1 class="text-4xl font-bold mb-6 uppercase bg-foreground text-background inline-block p-4">{product.name}</h1>
+    <p>{product.productType}</p>
     
     {product.images && product.images.length > 0 && (
       <Image
