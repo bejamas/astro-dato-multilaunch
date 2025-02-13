@@ -4,8 +4,11 @@ import queryCMS from '../../../lib/cms';
 import { StructuredText } from '@datocms/astro';
 import { Image } from '@datocms/astro';
 import ImageBlock from '../../../components/blocks/Image.astro';
+import getAvailableLocales, { getFallbackLocale } from '../../../lib/i18n';
 
 export async function getStaticPaths() {
+  const availableLocales = await getAvailableLocales();
+  
   const allProductsQuery = `
     query {
       allProducts {
@@ -14,14 +17,26 @@ export async function getStaticPaths() {
     }
   `;
   const { allProducts } = await queryCMS(allProductsQuery);
-  return allProducts.map(product => ({ params: { slug: product.slug } }));
+
+  const paths = [];
+
+  for (const locale of availableLocales) {
+    for (const product of allProducts) {
+      paths.push({
+        params: { locale, slug: product.slug },
+      });
+    }
+  }
+
+  return paths;
 }
 
-const { slug } = Astro.params;
+const { locale, slug } = Astro.params;
+
 
 const query = `
-  query GetProductBySlug($slug: String) {
-    product(filter: { slug: { eq: $slug } }) {
+  query GetProductBySlug($locale: SiteLocale, $slug: String) {
+    product(locale: $locale, filter: { slug: { eq: $slug } }) {
       name
       productType
       description {
@@ -58,8 +73,7 @@ const query = `
   }
 `;
 
-const variables = { slug };
-const { product } = await queryCMS(query, variables);
+const { product } = await queryCMS(query, { slug, locale });
 
 if (!product) {
   return Astro.redirect('/404');

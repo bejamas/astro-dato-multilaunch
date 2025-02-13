@@ -2,21 +2,21 @@
 import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro';
 import queryCMS from '../../lib/cms';
-// import getAvailableLocales, { getFallbackLocale } from '../lib/i18n';
+import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import ProductCard from '../../components/ProductCard.astro';
 
 export async function getStaticPaths() {
-  return [
-    { params: { locale: 'en' } },
-    { params: { locale: 'fr' } },
-  ];
+  const availableLocales = await getAvailableLocales();
+  return availableLocales.map(locale => ({
+    params: { locale }
+  }));
 }
 
-// const locales = await getAvailableLocales();
+const { locale } = Astro.params;
 
 const query = `
-  query {
-    allProducts(first: 3, orderBy: _createdAt_DESC) {
+  query($locale: SiteLocale) {
+    allProducts(locale: $locale, first: 3, orderBy: _createdAt_DESC) {
       id
       name
       slug
@@ -42,7 +42,7 @@ const query = `
   }
 `;
 
-const { allProducts, home } = await queryCMS(query);
+const { allProducts, home } = await queryCMS(query, { locale });
 ---
 
 <Layout additionalSeo={home._seoMetaTags}>

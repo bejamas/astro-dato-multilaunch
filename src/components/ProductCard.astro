@@ -1,6 +1,8 @@
 ---
 import { Image } from '@datocms/astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 const { product } = Astro.props;
+
 ---
 
 <article>
@@ -12,7 +14,7 @@ const { product } = Astro.props;
   )}
   <span>{product.productType}</span>
   <h3>
-    <a href={`/products/${product.slug}`}>
+    <a href={getRelativeLocaleUrl(Astro.currentLocale, `/products/${product.slug}`)}>
     {product.name}
     </a>
   </h3>
