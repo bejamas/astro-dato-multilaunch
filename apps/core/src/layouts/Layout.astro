@@ -18,7 +18,7 @@ const query = `
 `;
 
 const { _site } = await queryCMS(query);
-const { additionalSeo } = Astro.props;
+const { additionalSeo = [] } = Astro.props;
 ---
 
 <html lang="en">
