@@ -4,8 +4,11 @@ import queryCMS from '../../../lib/cms';
 import { StructuredText } from '@datocms/astro';
 import { Image } from '@datocms/astro';
 import ImageBlock from '../../../components/blocks/Image.astro';
+import getAvailableLocales, { getFallbackLocale } from '../../../lib/i18n';
 
 export async function getStaticPaths() {
+  const availableLocales = await getAvailableLocales();
+  
   const allProductsQuery = `
     query {
       allProducts {
@@ -14,14 +17,26 @@ export async function getStaticPaths() {
     }
   `;
   const { allProducts } = await queryCMS(allProductsQuery);
-  return allProducts.map(product => ({ params: { slug: product.slug } }));
+
+  const paths = [];
+
+  for (const locale of availableLocales) {
+    for (const product of allProducts) {
+      paths.push({
+        params: { locale, slug: product.slug },
+      });
+    }
+  }
+
+  return paths;
 }
 
-const { slug } = Astro.params;
+const fallbackLocale = await getFallbackLocale();
+const { locale, slug } = Astro.params;
 
 const query = `
-  query GetProductBySlug($slug: String) {
-    product(filter: { slug: { eq: $slug } }) {
+  query GetProductBySlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
+    product(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
       name
       productType
       description {
@@ -40,7 +55,7 @@ const query = `
         }
       }
       images {
-        responsiveImage(imgixParams: { fit: max, auto: format }) {
+        responsiveImage(imgixParams: { w: 640, h: 330, fit: crop, auto: format }) {
           src
           width
           height
@@ -58,8 +73,7 @@ const query = `
   }
 `;
 
-const variables = { slug };
-const { product } = await queryCMS(query, variables);
+const { product } = await queryCMS(query, { slug, locale, fallbackLocale });
 
 if (!product) {
   return Astro.redirect('/404');
@@ -68,9 +82,19 @@ if (!product) {
 ---
 
 <Layout additionalSeo={product._seoMetaTags}>
-  <div class="container mx-auto px-4 py-8">
+  <div class="">
 
-    <h1 class="text-4xl font-bold mb-6 uppercase bg-foreground text-background inline-block p-4">{product.title}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[600px] mx-auto mb-4">
+      <div>
+        <div class="mb-3 text-xs uppercase">{product.productType}</div>
+        <h1 class="text-3xl">{product.name}</h1>
+      </div>
+      <div class="text-xs leading-5">
+        <StructuredText
+          data={product.description}
+        />
+      </div>
+    </div>
     
     {product.images && product.images.length > 0 && (
       <Image
@@ -79,7 +103,7 @@ if (!product) {
       />          
     )}
     
-    <div class="prose prose-invert max-w-none mb-8">
+    <div class="text-xs leading-5 mt-4">
       <StructuredText
         data={product.description}
         blockComponents={

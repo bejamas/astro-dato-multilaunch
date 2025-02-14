@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Geist Mono", serif;
+  --container-3xl: 40rem;
+}
