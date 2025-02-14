@@ -1,9 +1,10 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 const navItems = [
   { href: '/', text: 'Home' },
-  { href: '/products', text: 'Products' },
-  { href: '/blog', text: 'Blog' },
-  { href: '/about', text: 'About' },
+  { href: getRelativeLocaleUrl(Astro.currentLocale, '/products'), text: 'Products' },
+  { href: getRelativeLocaleUrl(Astro.currentLocale, '/about'), text: 'About' },
 ];
 ---
 
