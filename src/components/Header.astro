@@ -7,13 +7,13 @@ const navItems = [
 ];
 ---
 
-<header>
+<header class="p-4 mb-6">
   <nav>
     <a href="/"></a>
-    <ul>
+    <ul class="flex justify-center gap-4">
       {navItems.map((item) => (
         <li>
-          <a href={item.href}>
+          <a href={item.href} class="text-xs uppercase">
             {item.text}
           </a>
         </li>
