@@ -26,11 +26,13 @@ const { additionalSeo } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <Seo data={[..._site.faviconMetaTags, ...additionalSeo]} />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="font-serif">
     <Header />
-    <main class="flex-grow">
+    <main class="flex-grow max-w-[640px] mx-auto px-4">
       <slot />
     </main>
     <Footer />

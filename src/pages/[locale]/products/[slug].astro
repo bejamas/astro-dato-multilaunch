@@ -55,7 +55,7 @@ const query = `
         }
       }
       images {
-        responsiveImage(imgixParams: { fit: max, auto: format }) {
+        responsiveImage(imgixParams: { w: 640, h: 330, fit: crop, auto: format }) {
           src
           width
           height
@@ -82,10 +82,19 @@ if (!product) {
 ---
 
 <Layout additionalSeo={product._seoMetaTags}>
-  <div class="container mx-auto px-4 py-8">
+  <div class="">
 
-    <h1 class="text-4xl font-bold mb-6 uppercase bg-foreground text-background inline-block p-4">{product.name}</h1>
-    <p>{product.productType}</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[600px] mx-auto">
+      <div>
+        <div class="mb-3 text-xs uppercase">{product.productType}</div>
+        <h1 class="text-3xl">{product.name}</h1>
+      </div>
+      <div class="text-xs leading-5">
+        <StructuredText
+          data={product.description}
+        />
+      </div>
+    </div>
     
     {product.images && product.images.length > 0 && (
       <Image
