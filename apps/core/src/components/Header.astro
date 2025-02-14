@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import LanguageSwitcher  from './LanguageSwitcher.astro';
 
 const navItems = [
   { href: '/', text: 'Home' },
@@ -9,16 +10,21 @@ const navItems = [
 ---
 
 <header class="p-4 mb-6">
-  <nav>
-    <a href="/"></a>
-    <ul class="flex justify-center gap-4">
-      {navItems.map((item) => (
-        <li>
-          <a href={item.href} class="text-xs uppercase">
-            {item.text}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
+  <div class="max-w-[600px] mx-auto flex justify-between">
+    <div class="flex gap-7">
+      <LanguageSwitcher />
+    </div>
+    <nav>
+      <a href="/"></a>
+      <ul class="flex justify-center gap-4">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="text-xs uppercase">
+              {item.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
 </header>
