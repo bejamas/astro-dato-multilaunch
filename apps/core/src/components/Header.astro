@@ -3,7 +3,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import LanguageSwitcher  from './LanguageSwitcher.astro';
 
 const navItems = [
-  { href: '/', text: 'Home' },
+  { href: getRelativeLocaleUrl(Astro.currentLocale, '/'), text: 'Home' },
   { href: getRelativeLocaleUrl(Astro.currentLocale, '/products'), text: 'Products' },
   { href: getRelativeLocaleUrl(Astro.currentLocale, '/about'), text: 'About' },
 ];

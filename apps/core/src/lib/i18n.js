@@ -17,3 +17,8 @@ export async function getFallbackLocale() {
   const locales = await getAvailableLocales();
   return locales[0]; // Using the first ordered locale as fallback
 }
+
+export function getLocaleSlug(locale, path) {
+  const slug = path.split('/').slice(2).join('/');
+  return slug ? `/${locale}/${slug}` : `/${locale}`;
+}
