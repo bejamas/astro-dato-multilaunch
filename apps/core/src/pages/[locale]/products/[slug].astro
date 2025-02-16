@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import PrimaryButton from '../../../components/PrimaryButton.astro';
 import ReviewCard from '../../../components/ReviewCard.astro';
 import queryCMS from '../../../lib/cms';
 import { StructuredText } from '@datocms/astro';
@@ -40,6 +41,21 @@ const query = `
     product(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
       name
       productType
+      featuresSubtitle
+      featuresHeadline
+      features {
+        ... on FeatureItemRecord {
+          label
+          url
+        }
+      }
+      actions {
+        ... on PrimaryButtonRecord {
+          label
+          slug
+          variant
+        }
+      }      
       reviews {
         reviews {
           reviewerName
@@ -87,7 +103,6 @@ const { product } = await queryCMS(query, { slug, locale, fallbackLocale });
 if (!product) {
   return Astro.redirect('/404');
 }
-
 ---
 
 <Layout additionalSeo={product._seoMetaTags}>
@@ -112,9 +127,37 @@ if (!product) {
       />          
     )}
 
-    {product.reviews && product.reviews.reviews && product.reviews.reviews.length > 0 && product.reviews.reviews.map(review => (
-      <ReviewCard review={review} />
-    ))}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <div class="mb-3 text-xs uppercase">{product.productType}</div>
+        <h1 class="mb-6 text-3xl">{product.featuresHeadline}</h1>
+        <div class="mb-6 text-xs leading-4">{product.featuresSubtitle}</div>
+        <div class="flex gap-4">
+          {product.actions && product.actions.length > 0 && product.actions.map(action => (
+            <PrimaryButton label={action.label} slug={action.slug} variant={action.variant} />
+          ))}
+        </div>
+      </div>
+      
+      <ul class="">
+        {product.features && product.features.length > 0 && product.features.map(feature => (
+          <li class="p-6">
+            <a href="feature.url" class="flex justify-between align-center text-xs">
+              {feature.label}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6.5 3L9.5 6L6.5 9M2.5 3L5.5 6L2.5 9" stroke="#232323" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <section class="mt-20">
+      {product.reviews && product.reviews.reviews && product.reviews.reviews.length > 0 && product.reviews.reviews.map(review => (
+        <ReviewCard review={review} />
+      ))}
+    </section>
     
     <div class="text-xs leading-5 mt-4">
       <StructuredText
