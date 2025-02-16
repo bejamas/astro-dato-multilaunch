@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ReviewCard from '../../../components/ReviewCard.astro';
 import queryCMS from '../../../lib/cms';
 import { StructuredText } from '@datocms/astro';
 import { Image } from '@datocms/astro';
@@ -39,6 +40,18 @@ const query = `
     product(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
       name
       productType
+      reviews {
+        ... on ReviewSectionRecord {
+          id
+          _modelApiKey
+          reviews {
+            reviewerName
+            reviewDate
+            reviewScore
+            body
+          }
+        }
+      }
       description {
         value
         blocks {
@@ -102,6 +115,8 @@ if (!product) {
         pictureClass="w-full"
       />          
     )}
+
+    <ReviewCard review={product.reviews}>
     
     <div class="text-xs leading-5 mt-4">
       <StructuredText
