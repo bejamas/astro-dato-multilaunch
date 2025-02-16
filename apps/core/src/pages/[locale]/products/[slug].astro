@@ -41,15 +41,11 @@ const query = `
       name
       productType
       reviews {
-        ... on ReviewSectionRecord {
-          id
-          _modelApiKey
-          reviews {
-            reviewerName
-            reviewDate
-            reviewScore
-            body
-          }
+        reviews {
+          reviewerName
+          reviewDate
+          reviewScore
+          body
         }
       }
       description {
@@ -116,7 +112,9 @@ if (!product) {
       />          
     )}
 
-    <ReviewCard review={product.reviews}>
+    {product.reviews && product.reviews.reviews && product.reviews.reviews.length > 0 && product.reviews.reviews.map(review => (
+      <ReviewCard review={review} />
+    ))}
     
     <div class="text-xs leading-5 mt-4">
       <StructuredText
