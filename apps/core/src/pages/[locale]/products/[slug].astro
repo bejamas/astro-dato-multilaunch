@@ -5,7 +5,6 @@ import ReviewCard from '../../../components/ReviewCard.astro';
 import queryCMS from '../../../lib/cms';
 import { StructuredText } from '@datocms/astro';
 import { Image } from '@datocms/astro';
-import ImageBlock from '../../../components/blocks/Image.astro';
 import getAvailableLocales, { getFallbackLocale } from '../../../lib/i18n';
 
 export async function getStaticPaths() {
@@ -158,15 +157,6 @@ if (!product) {
         <ReviewCard review={review} />
       ))}
     </section>
-    
-    <div class="text-xs leading-5 mt-4">
-      <StructuredText
-        data={product.description}
-        blockComponents={
-         {
-           ImageRecord: ImageBlock
-         }}
-      />
-    </div>
+  
   </div>
 </Layout>
