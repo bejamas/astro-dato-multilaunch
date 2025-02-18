@@ -1,28 +1,25 @@
 ---
 const { form } = Astro.props;
 ---
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-  <div>
-    <h2 class="mb-6 text-3xl">{form.title}</h2>
-    <div class="mb-6 text-xs leading-4">{form.subtitle}</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 p-6 bg-[#F0F0F0]">
+  <div class="space-y-4">
+    <h2 class="text-2xl">{form.title}</h2>
+    <div class="text-xs leading-4">{form.subtitle}</div>
     <div class="flex">
-      <ul>
+      <ul class="flex">
         {form.logos.map(logo => (
-          <img src={logo.image.url} alt={logo.image.alt}>
+          <li class="px-4 py-2 border border-[#E3E3E3]">
+            <img width="48" src={logo.image.url} alt={logo.image.alt} />
+          </li>
         ))}
-        <li>
-          <a href="">
-            <svg></svg>
-          </a>
-        </li>
       </ul>            
     </div>
-    <p>{form.companyTitle}</p>
+    <p class="text-xs">{form.companyTitle}</p>
     <div class="flex">
       <ul>
         <li>
           <a href="">
-            <img src={form.companyLogo.url} alt={form.companyLogo.alt}>
+            <img width="60" height="17" src={form.companyLogo.url} alt={form.companyLogo.alt}>
           </a>
         </li>
       </ul>            
@@ -30,20 +27,18 @@ const { form } = Astro.props;
   </div>
   
   <form action={form.submitUrl}>
-    <div class="space-y-12">
-      <div class="">
-        <label for="email" class="block text-sm/6">{form.emailLabel}</label>
-        <input type="email" name="email" id="email" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder={form.emailPlaceholder}>
-      </div>
-      
-      <div class="">
-        <label for="request" class="block text-sm/6">{form.messageLabel}</label>
-        <textarea name="request" id="request" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder={form.messagePlaceholder}></textarea>
-      </div>
+    <div class="pt-2 px-4 pb-4 bg-white border border-[#E3E3E3]">
+      <label for="email" class="block text-sm/6">{form.emailLabel}</label>
+      <input type="email" name="email" id="email" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder={form.emailPlaceholder}>
+    </div>
+    
+    <div class="pt-2 px-4 pb-4 bg-white border border-[#E3E3E3]">
+      <label for="request" class="block text-sm/6">{form.messageLabel}</label>
+      <textarea name="request" id="request" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder={form.messagePlaceholder}></textarea>
+    </div>
 
-      <div>
-        <input type="submit" value={form.submitLabel}>
-      </div>
+    <div class="pt-2 px-4 pb-4 bg-white border border-[#E3E3E3]">
+      <input type="submit" value={form.submitLabel}>
     </div>
   </form>
 
