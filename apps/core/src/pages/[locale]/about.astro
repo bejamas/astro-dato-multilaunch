@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import getAvailableLocales from '../../lib/i18n';
+
+export async function getStaticPaths() {
+  const availableLocales = await getAvailableLocales();  
+  return availableLocales.map(locale => ({
+    params: { locale }
+  }));
+}
+
+---
+
+<Layout>
+  <div class="">
+    <h1 class="">about this template</h1>
+  </div>
+</Layout>
