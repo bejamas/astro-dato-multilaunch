@@ -95,10 +95,33 @@ const query = `
         content
       }           
     }
+    contactForm(locale: $locale, fallbackLocales: $fallbackLocale) {
+      ctaForm {
+        title
+        subtitle
+        submitUrl
+        submitLabel
+        messagePlaceholder
+        messageLabel
+        logos {
+          image {
+            url
+            alt
+          }
+        }
+        emailPlaceholder
+        emailLabel
+        companyTitle
+        companyLogo {
+          alt
+          url
+        }
+      }
+    }
   }
 `;
 
-const { product } = await queryCMS(query, { slug, locale, fallbackLocale });
+const { product, contactForm } = await queryCMS(query, { slug, locale, fallbackLocale });
 
 if (!product) {
   return Astro.redirect('/404');
@@ -159,7 +182,7 @@ if (!product) {
       </section>
     ))}
 
-    <ContactForm />
+    <ContactForm form={contactForm.ctaForm} />
   
   </div>
 </Layout>
