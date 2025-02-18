@@ -28,12 +28,12 @@ const { form } = Astro.props;
   
   <form action={form.submitUrl}>
     <div class="pt-2 px-4 pb-4 bg-white border border-[#E3E3E3]">
-      <label for="email" class="block text-sm/6">{form.emailLabel}</label>
+      <label for="email" class="block text-xs">{form.emailLabel}</label>
       <input type="email" name="email" id="email" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder={form.emailPlaceholder}>
     </div>
     
     <div class="pt-2 px-4 pb-4 bg-white border border-[#E3E3E3]">
-      <label for="request" class="block text-sm/6">{form.messageLabel}</label>
+      <label for="request" class="block text-xs">{form.messageLabel}</label>
       <textarea name="request" id="request" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder={form.messagePlaceholder}></textarea>
     </div>
 
