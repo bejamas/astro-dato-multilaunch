@@ -1,0 +1,60 @@
+<!--
+<svg width="672" height="1" viewBox="0 0 672 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line y1="0.5" x2="672" y2="0.5" stroke="#E3E3E3" stroke-dasharray="8 8"/>
+</svg>
+-->
+<style>
+  .line {
+    position: relative;
+    height: 1px;
+    background-image: url('data:image/svg+xml,<svg width="672" height="1" viewBox="0 0 672 1" fill="none" xmlns="http://www.w3.org/2000/svg"><line y1="0.5" x2="672" y2="0.5" stroke="%23E3E3E3" stroke-dasharray="8 8"/></svg>');
+    z-index: 1;
+  }
+
+  .line::before,
+  .line::after {
+    position: absolute;
+    top: 0;
+    width: calc((100vw - 100%) / 2);
+    height: 1px;
+    content: "";
+  }
+
+  .line::before {
+    right: 100%;
+    background: linear-gradient(-90deg, rgba(39, 39, 39, 0.12) 0%, rgba(39, 39, 39, 0.00) 100%);
+  }
+
+  .line::after {
+    left: 100%;
+    background: linear-gradient(90deg, rgba(39, 39, 39, 0.12) 0%, rgba(39, 39, 39, 0.00) 100%);
+  }
+
+  .stars::before,
+  .stars::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    margin-block: auto;
+    content: "";
+    width: 4px;
+    height: 4px;
+    transform: rotate(-45deg);
+    background: #C8C8C8;
+    box-shadow: 0px 0px 12px 4px rgba(255, 255, 255, 0.16);
+  }
+
+  .stars::before {
+    right: calc(100% - 1.5px);
+  }
+
+  .stars::after {
+    left: calc(100% - 1.5px);
+  }
+
+  
+</style>
+<div class="container line">
+  <div class="stars"></div>
+</div>

@@ -4,7 +4,7 @@ const { label, slug, variant = "primary" } = Astro.props;
 
 <a 
   href={slug} 
-  class={`px-4 py-2 rounded-lg text-sm whitespace-nowrap transition-all duration-200 
+  class={`px-4 py-2 text-xs whitespace-nowrap uppercase transition-all duration-200 
     ${variant === "primary" ? "bg-black text-white hover:bg-gray-900" : "bg-white text-black border border-black hover:bg-gray-100"}`}>
   {label}
 </a>

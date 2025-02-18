@@ -31,10 +31,12 @@ const { additionalSeo = [] } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
   </head>
   <body class="font-serif">
-    <Header />
-    <main class="flex-grow max-w-[640px] mx-auto px-4">
-      <slot />
-    </main>
-    <Footer />
+    <div class="max-w-[675px] mx-auto border-x border-[#E3E3E3]">
+      <Header />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
