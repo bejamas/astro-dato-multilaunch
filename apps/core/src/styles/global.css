@@ -3,4 +3,29 @@
 @theme {
   --font-serif: "Geist Mono", serif;
   --container-3xl: 40rem;
+  /* Base dark background */
+  --color-background: hsl(0deg 0% 98.04%); /* Dark background */
+  --color-foreground: hsl(0deg 0% 13.73%); /* High contrast for text/icons */
+  /* Card */
+  --color-card: hsl(0deg 0% 92.55%); /* Slightly lighter than background for cards */
+  --color-card-foreground: var(--color-foreground);
+  /* Primary */
+  --color-primary: hsl(0deg 0% 13.73%); /* Vibrant violet for standout elements */
+  --color-primary-foreground: white; /* High-contrast white for text/icons on primary */
+  /* Secondary */
+  --color-secondary: red; /* Softer blue for secondary actions */
+  --color-secondary-foreground: red; /* High-contrast white */
+  /* Muted */
+  --color-muted: hsl(0deg 0% 14% / 40%); /* Subdued gray for less prominent elements */
+  /* Accent */
+  --color-accent: red; /* Bright green for accents (e.g., success or highlights) */
+  --color-accent-foreground: red; /* High-contrast white */
+  /* Destructive */
+  --color-destructive: 0 84% 60%; /* Vivid red for errors or destructive actions */
+  --color-destructive-foreground: 0 0% 100%; /* White for clarity */
+  /* Borders and inputs */
+  --color-border: hsl(0deg 0% 15.29% / 12%); /* Neutral dark border color */
+  --color-input: red; /* Matches muted for input backgrounds */
+  /* Ring (focus outlines) */
+  --color-ring: red; /* Matches primary for visual consistency */
 }

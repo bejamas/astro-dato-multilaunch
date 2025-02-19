@@ -175,25 +175,12 @@ if (!product) {
         {product.features && product.features.length > 0 && product.features.map(feature => (
           <li class="p-6">
             <a href="feature.url" class="flex justify-between align-center text-xs">
-              <style>
-                .c-border::before {
-                  position: absolute;
-                  content: "";
-                  right: calc(100% + 8px);
-                  top: 0;
-                  bottom: 0;
-                  margin-block: auto;
-                  height: 24px;
-                  width: 6px;
-                  background-color: lightgray;
-                } 
-              </style>
-              <span class="block relative c-border">
+              <span class="relative before:absolute before:content-[''] before:right-[calc(100%+8px)] before:top-0 before:bottom-0 before:m-auto before:h-6 before:w-1.5 before:bg-border">
                 {feature.label}
               </span>
-              <span class="flex items-center justify-center w-5 h-5 rounded-xs border border-black">
+              <span class="flex items-center justify-center w-5 h-5 rounded-xs border border-border">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M6.5 3L9.5 6L6.5 9M2.5 3L5.5 6L2.5 9" stroke="#232323" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6.5 3L9.5 6L6.5 9M2.5 3L5.5 6L2.5 9" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </span>
             </a>

@@ -8,7 +8,7 @@ const { form } = Astro.props;
     <div class="flex">
       <ul class="flex">
         {form.logos.map(logo => (
-          <li class="px-4 py-2 border border-[#E3E3E3]">
+          <li class="px-4 py-2 border border-border">
             <img width="48" src={logo.image.url} alt={logo.image.alt} />
           </li>
         ))}
@@ -27,18 +27,18 @@ const { form } = Astro.props;
   </div>
   
   <form action={form.submitUrl}>
-    <div class="pt-2 px-4 pb-4 bg-white border border-[#E3E3E3]">
+    <div class="pt-2 px-4 pb-4 bg-white border border-border">
       <label for="email" class="block text-xs mb-1">{form.emailLabel}</label>
-      <input type="email" name="email" id="email" class="block w-full min-w-0 text-base placeholder:text-gray-400 focus:outline-none" placeholder={form.emailPlaceholder}>
+      <input type="email" name="email" id="email" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.emailPlaceholder}>
     </div>
     
-    <div class="pt-2 px-4 pb-4 bg-white border-l border-r border-[#E3E3E3]">
+    <div class="pt-2 px-4 pb-4 bg-white border-l border-r border-border">
       <label for="request" class="block text-xs mb-1">{form.messageLabel}</label>
-      <textarea name="request" id="request" rows="3" class="block w-full min-w-0 text-base placeholder:text-gray-400 focus:outline-none" placeholder={form.messagePlaceholder}></textarea>
+      <textarea name="request" id="request" rows="3" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.messagePlaceholder}></textarea>
     </div>
 
-    <div class="pt-2 px-4 pb-4 bg-white border border-[#E3E3E3]">
-      <input type="submit" value={form.submitLabel} class="block w-full p-1.5 text-xs uppercase text-center bg-black text-white" />
+    <div class="pt-2 px-4 pb-4 bg-white border border-border">
+      <input type="submit" value={form.submitLabel} class="block w-full p-1.5 text-xs uppercase text-center bg-primary text-primary-foreground" />
     </div>
   </form>
 </div>
