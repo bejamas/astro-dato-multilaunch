@@ -3,9 +3,9 @@ import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro';
 import queryCMS from '../../lib/cms';
 import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
-import ProductCard from '../../components/ProductCard.astro';
 import Hero from '../../components/Hero.astro';
 import Heading from '../../components/Heading.astro';
+import ProductShowcase from '../../components/ProductShowcase.astro';
 import Line from '../../components/Line.astro';
 
 export async function getStaticPaths() {
@@ -19,23 +19,7 @@ const fallbackLocale = await getFallbackLocale();
 const { locale } = Astro.params;
 
 const query = `
-  query($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
-    allProducts(locale: $locale, fallbackLocales: $fallbackLocale, first: 3, orderBy: _createdAt_DESC) {
-      id
-      name
-      slug
-      productType 
-      images {
-        responsiveImage(imgixParams: { fit: max, auto: format }) {
-          src
-          width
-          height
-          alt
-          title
-          base64
-        }
-      }
-    }
+  query {
     home {
       _seoMetaTags {
         tag
@@ -63,12 +47,25 @@ const query = `
             slug
           }
         }
+        ... on ProductsSectionRecord {
+          id
+          _modelApiKey
+          products {
+            productType
+            name
+            images {
+              alt
+              url
+            }
+            slug
+          }
+        }
       }     
     }
   }
 `;
 
-const { allProducts, home } = await queryCMS(query, { locale, fallbackLocale });
+const { home } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
 <Layout additionalSeo={home._seoMetaTags}>    
@@ -82,18 +79,11 @@ const { allProducts, home } = await queryCMS(query, { locale, fallbackLocale });
           );
         case 'hero_section':
           return <Hero hero={item} />;
+        // case 'products_section':
+        //   return <ProductShowcase test={item} />;
         default:
           return null;
       }
     })
   }   
-  
-  <Line />
-  <div class="pt-6 px-4 pb-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-      {allProducts.map((product) => (
-        <ProductCard product={product} />
-      ))}
-    </div>
-  </div>
 </Layout>
