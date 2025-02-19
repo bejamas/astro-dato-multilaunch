@@ -91,6 +91,9 @@ const query = `
           base64
         }
       }
+      accentColor {
+        hex
+      }
       _seoMetaTags {
         tag
         attributes
@@ -131,77 +134,79 @@ if (!product) {
 ---
 
 <Layout additionalSeo={product._seoMetaTags}>
-  <section>
-    <Heading index="01" text="home" />      
-    <Line />
-    <div class="pt-6 px-4 pb-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[600px] mx-auto mb-4">
+  <div style={{ "--color-primary": product.accentColor.hex }}>
+    <section>
+      <Heading index="01" text="home" />      
+      <Line />
+      <div class="pt-6 px-4 pb-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[600px] mx-auto mb-4">
+          <div>
+            <div class="mb-3 text-xs uppercase">{product.productType}</div>
+            <h1 class="text-3xl">{product.name}</h1>
+          </div>
+          <div class="text-xs leading-5">
+            <StructuredText
+              data={product.description}
+            />
+          </div>
+        </div>
+        
+        {product.images && product.images.length > 0 && (
+          <Image
+            data={product.images[0].responsiveImage}
+            pictureClass="w-full"
+          />          
+        )}
+      </div>
+    </section>
+
+    <section>
+      <Heading index="02" text={'Why ' + product.name} />
+      <Line />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-4 pb-4">
         <div>
-          <div class="mb-3 text-xs uppercase">{product.productType}</div>
-          <h1 class="text-3xl">{product.name}</h1>
+          <div class="mt-6 mb-3 text-xs uppercase">{product.productType}</div>
+          <h2 class="mb-6 text-3xl">{product.featuresHeadline}</h2>
+          <div class="mb-6 text-xs leading-4">{product.featuresSubtitle}</div>
+          <div class="flex gap-4 mb-6">
+            {product.actions && product.actions.length > 0 && product.actions.map(action => (
+              <PrimaryButton label={action.label} slug={action.slug} variant={action.variant} />
+            ))}
+          </div>
         </div>
-        <div class="text-xs leading-5">
-          <StructuredText
-            data={product.description}
-          />
-        </div>
-      </div>
-      
-      {product.images && product.images.length > 0 && (
-        <Image
-          data={product.images[0].responsiveImage}
-          pictureClass="w-full"
-        />          
-      )}
-    </div>
-  </section>
-
-  <section>
-    <Heading index="02" text={'Why ' + product.name} />
-    <Line />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-4 pb-4">
-      <div>
-        <div class="mt-6 mb-3 text-xs uppercase">{product.productType}</div>
-        <h2 class="mb-6 text-3xl">{product.featuresHeadline}</h2>
-        <div class="mb-6 text-xs leading-4">{product.featuresSubtitle}</div>
-        <div class="flex gap-4 mb-6">
-          {product.actions && product.actions.length > 0 && product.actions.map(action => (
-            <PrimaryButton label={action.label} slug={action.slug} variant={action.variant} />
+        
+        <ul class="">
+          {product.features && product.features.length > 0 && product.features.map(feature => (
+            <li class="p-6">
+              <a href="feature.url" class="flex justify-between align-center text-xs">
+                <span class="relative before:absolute before:content-[''] before:right-[calc(100%+8px)] before:top-0 before:bottom-0 before:m-auto before:h-6 before:w-1.5 before:bg-border">
+                  {feature.label}
+                </span>
+                <span class="flex items-center justify-center w-5 h-5 rounded-xs border border-border">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M6.5 3L9.5 6L6.5 9M2.5 3L5.5 6L2.5 9" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      
-      <ul class="">
-        {product.features && product.features.length > 0 && product.features.map(feature => (
-          <li class="p-6">
-            <a href="feature.url" class="flex justify-between align-center text-xs">
-              <span class="relative before:absolute before:content-[''] before:right-[calc(100%+8px)] before:top-0 before:bottom-0 before:m-auto before:h-6 before:w-1.5 before:bg-border">
-                {feature.label}
-              </span>
-              <span class="flex items-center justify-center w-5 h-5 rounded-xs border border-border">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M6.5 3L9.5 6L6.5 9M2.5 3L5.5 6L2.5 9" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <Heading index="03" text="Testimonials" />
-    {product.reviews && product.reviews.reviews && product.reviews.reviews.length > 0 && product.reviews.reviews.map(review => (
-      <ReviewCard review={review} />
-    ))}
-  </section>
+    <section>
+      <Heading index="03" text="Testimonials" />
+      {product.reviews && product.reviews.reviews && product.reviews.reviews.length > 0 && product.reviews.reviews.map(review => (
+        <ReviewCard review={review} />
+      ))}
+    </section>
 
-  <section>
-    <Heading index="04" text="CTA" />
-    <div class="p-4">
-      <ContactForm form={contactForm.ctaForm} />
-    </div>
-  </section>
-  <Line />
+    <section>
+      <Heading index="04" text="CTA" />
+      <div class="p-4">
+        <ContactForm form={contactForm.ctaForm} />
+      </div>
+    </section>
+    <Line />
+  </div>
 </Layout>
