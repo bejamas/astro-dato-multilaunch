@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import queryCMS from '../../lib/cms';
 import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import ProductCard from '../../components/ProductCard.astro';
+import Hero from '../../components/Hero.astro';
 import Heading from '../../components/Heading.astro';
 import Line from '../../components/Line.astro';
 
@@ -40,7 +41,29 @@ const query = `
         tag
         attributes
         content
-      }           
+      }
+      sections {
+        ... on HeadingRecord {
+          id
+          _modelApiKey
+          index
+          label
+        }
+        ... on HeroSectionRecord {
+          id
+          _modelApiKey
+          heroTitle
+          heroSubtitle
+          heroImage {
+            alt
+            url
+          }
+          ctas {
+            label
+            slug
+          }
+        }
+      }     
     }
   }
 `;
@@ -48,16 +71,29 @@ const query = `
 const { allProducts, home } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
-<Layout additionalSeo={home._seoMetaTags}>
-  <section>
-    <Heading index="02" text="Our products" />      
-    <Line />
-    <div class="pt-6 px-4 pb-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {allProducts.map((product) => (
-          <ProductCard product={product} />
-        ))}
-      </div>
+<Layout additionalSeo={home._seoMetaTags}>    
+  {
+    home.sections.map((item: any) => {
+      switch (item._modelApiKey) {
+        case 'heading':
+          return (
+            <Heading index={item.index} text={item.label} />
+            <Line />
+          );
+        case 'hero_section':
+          return <Hero hero={item} />;
+        default:
+          return null;
+      }
+    })
+  }   
+  
+  <Line />
+  <div class="pt-6 px-4 pb-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {allProducts.map((product) => (
+        <ProductCard product={product} />
+      ))}
     </div>
-  </section>      
+  </div>
 </Layout>
