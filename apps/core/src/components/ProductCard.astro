@@ -5,18 +5,15 @@ const { product } = Astro.props;
 
 ---
 
-<article>
+<article class="relative">
+  <a class="absolute inset-0 flex flex-col justify-between p-6" href={getRelativeLocaleUrl(Astro.currentLocale, `/products/${product.slug}`)}>   
+    <h3 class="text-xs">{product.name}</h3>
+    <span class="text-[10px] text-muted uppercase">{product.productType}</span>
+  </a>
   {product.images && product.images[0] && (
     <Image
       data={product.images[0].responsiveImage}
       pictureClass="w-full"
     />
-  )}
-  <span>{product.productType}</span>
-  <h3>
-    <a href={getRelativeLocaleUrl(Astro.currentLocale, `/products/${product.slug}`)}>
-    {product.name}
-    </a>
-  </h3>
-  {product.description && <p>{product.description}</p>} 
+  )}    
 </article>

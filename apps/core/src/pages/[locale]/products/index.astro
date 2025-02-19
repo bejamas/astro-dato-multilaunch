@@ -2,6 +2,8 @@
 import queryCMS from '../../../lib/cms';
 import Layout from '../../../layouts/Layout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
+import Heading from '../../../components/Heading.astro';
+import Line from '../../../components/Line.astro';
 import getAvailableLocales, { getFallbackLocale } from '../../../lib/i18n';
 
 export async function getStaticPaths() {
@@ -47,12 +49,15 @@ const { allProducts, home } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
 <Layout additionalSeo={home._seoMetaTags}>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-8 uppercase bg-foreground text-background inline-block p-4">title is missing</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {allProducts.map((product) => (
-        <ProductCard product={product} />
-      ))}
+  <section>
+    <Heading index="01" text="Our products" />      
+    <Line />
+    <div class="pt-6 px-4 pb-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {allProducts.map((product) => (
+          <ProductCard product={product} />
+        ))}
+      </div>
     </div>
-  </div>
+  </section>      
 </Layout>

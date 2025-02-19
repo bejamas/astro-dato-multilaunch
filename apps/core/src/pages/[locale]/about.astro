@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import getAvailableLocales from '../../lib/i18n';
+import Heading from '../../components/Heading.astro';
+import Line from '../../components/Line.astro';
 
 export async function getStaticPaths() {
   const availableLocales = await getAvailableLocales();  
@@ -12,7 +14,11 @@ export async function getStaticPaths() {
 ---
 
 <Layout>
-  <div class="">
-    <h1 class="">about this template</h1>
-  </div>
+  <section>
+    <Heading index="01" text="About" />      
+    <Line />
+    <div class="pt-6 px-4 pb-4">
+      <p class="text-xs leading-5">About this template</p>
+    </div>
+  </section>      
 </Layout>

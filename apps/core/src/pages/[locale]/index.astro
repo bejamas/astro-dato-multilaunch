@@ -4,6 +4,8 @@ import Layout from '../../layouts/Layout.astro';
 import queryCMS from '../../lib/cms';
 import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import ProductCard from '../../components/ProductCard.astro';
+import Heading from '../../components/Heading.astro';
+import Line from '../../components/Line.astro';
 
 export async function getStaticPaths() {
   const availableLocales = await getAvailableLocales();  
@@ -47,15 +49,15 @@ const { allProducts, home } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
 <Layout additionalSeo={home._seoMetaTags}>
-  <div class="container mx-auto px-4 py-8">
-
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold mb-8 uppercase bg-foreground text-background inline-block p-4">Latest Products</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <section>
+    <Heading index="02" text="Our products" />      
+    <Line />
+    <div class="pt-6 px-4 pb-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
         {allProducts.map((product) => (
           <ProductCard product={product} />
         ))}
       </div>
-    </section>
-  </div>
+    </div>
+  </section>      
 </Layout>
