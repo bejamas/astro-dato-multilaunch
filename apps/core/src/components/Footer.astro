@@ -14,15 +14,8 @@ const query = `
 const { _site } = await queryCMS(query);
 ---
 
-<style>
-  footer {
-    margin-inline: calc(-1 * (100vw - 100%) / 2);
-    background: repeating-linear-gradient(-32deg, 
-    transparent 0px, transparent 6px, 
-    #E7E7E766 6px, #E7E7E766 12px);
-  }
-</style>
-
-<footer class="p-4">
-  <p class="text-xs text-center uppercase">&copy; {new Date().getFullYear()} {_site.globalSeo.siteName}. All rights reserved.</p>
+<footer class="col-start-1 -col-end-1 bg-[repeating-linear-gradient(-32deg,transparent_0px,transparent_6px,#e7e7e766_6px,#e7e7e766_12px)]">
+  <div class="max-w-3xl mx-auto p-4 border-x border-border">
+    <p class="text-xs text-center uppercase">&copy; {new Date().getFullYear()} {_site.globalSeo.siteName}. All rights reserved.</p>
+  </div>
 </footer>

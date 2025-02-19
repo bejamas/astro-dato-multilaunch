@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
+:root {
+  --outer-container-width: 675px;
+}
+
 @theme {
   --font-serif: "Geist Mono", serif;
-  --container-3xl: 40rem;
+  --container-3xl: var(--outer-container-width);
   /* Base dark background */
   --color-background: hsl(0deg 0% 98.04%); /* Dark background */
   --color-foreground: hsl(0deg 0% 13.73%); /* High contrast for text/icons */

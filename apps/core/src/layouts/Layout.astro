@@ -31,12 +31,16 @@ const { additionalSeo = [] } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
   </head>
   <body class="font-serif bg-background text-foreground">
-    <div class="max-w-[675px] mx-auto border-x border-border">
+    <div class="grid min-h-screen grid-rows-[auto_1fr_auto] grid-cols-[minmax(1em,1fr)_minmax(0,var(--outer-container-width))_minmax(1em,1fr)]">
       <Header />
-      <main>
+      <main class="col-start-2 border-x border-border relative z-1 after:hidden after:2xl:block after:absolute after:left-1/2 after:-translate-x-1/2 after:top-0 after:w-[1195px] after:aspect-square after:border after:border-border after:rounded-full after:content-[''] after:pointer-events-none">
         <slot />
       </main>
       <Footer />
     </div>
   </body>
 </html>
+
+
+
+
