@@ -2,10 +2,9 @@
 import ProductCard from '../components/ProductCard.astro';
 const { products } = Astro.props;
 ---
-
 <div class="pt-6 px-4 pb-4">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-    {products.map((product) => (
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">    
+    {products.products.map((product) => (
       <ProductCard product={product} />
     ))}
   </div>

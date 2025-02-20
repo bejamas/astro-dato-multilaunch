@@ -55,8 +55,14 @@ const query = `
             productType
             name
             images {
-              alt
-              url
+              responsiveImage(imgixParams: { fit: max, auto: format }) {
+                src
+                width
+                height
+                alt
+                title
+                base64
+              }
             }
             slug
           }
@@ -103,8 +109,8 @@ const { home } = await queryCMS(query, { locale, fallbackLocale });
           );
         case 'hero_section':
           return <Hero hero={item} />;
-        // case 'products_section':
-        //   return <ProductShowcase test={item} />;
+        case 'products_section':
+          return <ProductShowcase products={item} />;
         case 'contact_section':
           return <ContactForm form={item} />;
         default:
