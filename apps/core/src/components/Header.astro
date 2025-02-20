@@ -3,11 +3,17 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import LanguageSwitcher  from './LanguageSwitcher.astro';
 
 const navItems = [
-  { href: getRelativeLocaleUrl(Astro.currentLocale, '/'), text: 'Home' },
+  { href: getRelativeLocaleUrl(Astro.currentLocale, '/'), text: 'Beverse' },
   { href: getRelativeLocaleUrl(Astro.currentLocale, '/products'), text: 'Products' },
   { href: getRelativeLocaleUrl(Astro.currentLocale, '/about'), text: 'About' },
 ];
+
+const filteredNavItems = (Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale, '/') || Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale)) ? navItems.slice(1) : navItems;
+
+console.log(getRelativeLocaleUrl(Astro.currentLocale, '/'));
+console.log(getRelativeLocaleUrl(Astro.currentLocale, ''));
 ---
+
 <header class="col-start-2 p-4 border-x border-border">
   <div class="max-w-[600px] mx-auto flex justify-between">
     <div class="flex gap-7">
@@ -16,9 +22,9 @@ const navItems = [
     <nav>
       <a href="/"></a>
       <ul class="flex justify-center gap-4">
-        {navItems.map((item) => (
+        {filteredNavItems.map((item) => (
           <li>
-            <a href={item.href} class="text-xs uppercase">
+            <a href={item.href} class="rounded-sm bg-card px-2 py-1 text-xs uppercase">
               {item.text}
             </a>
           </li>
