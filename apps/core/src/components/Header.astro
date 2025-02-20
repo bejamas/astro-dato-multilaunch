@@ -13,10 +13,11 @@ const filteredNavItems = (Astro.url.pathname === getRelativeLocaleUrl(Astro.curr
 ---
 
 <header class="col-start-2 p-4 border-x border-border">
-  <div class="max-w-[600px] mx-auto flex justify-between">
+  <div class="max-w-[600px] mx-auto grid grid-cols-3">
     <div class="flex gap-7">
       <LanguageSwitcher />
     </div>
+    <img src="https://www.datocms-assets.com/150921/1740070520-.svg" alt="">
     <nav>
       <a href="/"></a>
       <ul class="flex justify-center gap-4">
