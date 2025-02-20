@@ -6,6 +6,7 @@ import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import Hero from '../../components/Hero.astro';
 import Heading from '../../components/Heading.astro';
 import ProductShowcase from '../../components/ProductShowcase.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import Line from '../../components/Line.astro';
 
 export async function getStaticPaths() {
@@ -60,6 +61,29 @@ const query = `
             slug
           }
         }
+        ... on ContactSectionRecord {
+          id
+          _modelApiKey
+          title
+          subtitle
+          submitUrl
+          submitLabel
+          messagePlaceholder
+          messageLabel
+          logos {
+            image {
+              url
+              alt
+            }
+          }
+          emailPlaceholder
+          emailLabel
+          companyTitle
+          companyLogo {
+            alt
+            url
+          }
+        }
       }     
     }
   }
@@ -81,6 +105,8 @@ const { home } = await queryCMS(query, { locale, fallbackLocale });
           return <Hero hero={item} />;
         // case 'products_section':
         //   return <ProductShowcase test={item} />;
+        case 'contact_section':
+          return <ContactForm form={item} />;
         default:
           return null;
       }
