@@ -8,7 +8,8 @@ const navItems = [
   { href: getRelativeLocaleUrl(Astro.currentLocale, '/about'), text: 'About' },
 ];
 
-const filteredNavItems = (Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale) || getRelativeLocaleUrl(Astro.currentLocale).replace(/\/$/, "")) ? navItems.slice(1) : navItems;
+// exclude homepage link from nav in homepage. ( /fr || /fr/ ) checks for both with our without slash pathname.
+const filteredNavItems = (Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale) || Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale).replace(/\/$/, "")) ? navItems.slice(1) : navItems;
 ---
 
 <header class="col-start-2 p-4 border-x border-border">
