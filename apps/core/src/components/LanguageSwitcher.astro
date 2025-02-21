@@ -23,11 +23,20 @@ const currentSlug = Astro.url.pathname;
   </div>
   <div id="dropdown" class="hidden absolute left-0 z-10 mt-2 w-full origin-top-left rounded-sm bg-card" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
     <ul class="py-1" role="none">      
-      {availableLocales.map((locale) => (
-        <li>
-          <a href={getLocaleSlug(locale, currentSlug)} class="block px-2 py-1 text-xs uppercase" role="menuitem" tabindex="-1">{locale}</a>
-        </li>
-      ))}      
+      {availableLocales
+        .filter((locale) => locale !== Astro.currentLocale) // Exclude the current locale
+        .map((locale) => (
+          <li key={locale}>
+            <a 
+              href={getLocaleSlug(locale, currentSlug)} 
+              class="block px-2 py-1 text-xs uppercase" 
+              role="menuitem" 
+              tabindex="-1"
+            >
+              {locale}
+            </a>
+          </li>
+        ))}      
     </ul>
   </div>
 </div>
