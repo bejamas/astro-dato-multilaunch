@@ -20,8 +20,8 @@ const fallbackLocale = await getFallbackLocale();
 const { locale } = Astro.params;
 
 const query = `
-  query {
-    home {
+  query Query($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+    home(locale: $locale, fallbackLocales: $fallbackLocale) {
       _seoMetaTags {
         tag
         attributes
