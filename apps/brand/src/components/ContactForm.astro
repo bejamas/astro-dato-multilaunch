@@ -1,0 +1,44 @@
+---
+const { form } = Astro.props;
+---
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 p-6 bg-card">
+  <div class="space-y-4">
+    <h2 class="text-2xl">{form.title}</h2>
+    <div class="text-xs leading-4">{form.subtitle}</div>
+    <div class="flex">
+      <ul class="flex">
+        {form.logos.map(logo => (
+          <li class="px-4 py-2 border border-border">
+            <img width="48" src={logo.image.url} alt={logo.image.alt} />
+          </li>
+        ))}
+      </ul>            
+    </div>
+    <p class="text-xs">{form.companyTitle}</p>
+    <div class="flex">
+      <ul>
+        <li>
+          <a href="">
+            <img width="60" height="17" src={form.companyLogo.url} alt={form.companyLogo.alt}>
+          </a>
+        </li>
+      </ul>            
+    </div>
+  </div>
+  
+  <form action={form.submitUrl}>
+    <div class="pt-2 px-4 pb-4 bg-background border border-border">
+      <label for="email" class="block text-xs mb-1">{form.emailLabel}</label>
+      <input type="email" name="email" id="email" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.emailPlaceholder}>
+    </div>
+    
+    <div class="pt-2 px-4 pb-4 bg-background border-l border-r border-border">
+      <label for="request" class="block text-xs mb-1">{form.messageLabel}</label>
+      <textarea name="request" id="request" rows="3" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.messagePlaceholder}></textarea>
+    </div>
+
+    <div class="pt-2 px-4 pb-4 bg-background border border-border">
+      <input type="submit" value={form.submitLabel} class="block w-full p-1.5 text-xs uppercase text-center bg-primary text-primary-foreground" />
+    </div>
+  </form>
+</div>

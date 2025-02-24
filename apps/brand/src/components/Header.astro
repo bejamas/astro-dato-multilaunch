@@ -1,0 +1,37 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import LanguageSwitcher  from './LanguageSwitcher.astro';
+// exclude homepage link from nav in homepage. ( /fr || /fr/ ) checks for both with our without slash pathname.
+const isHome = Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale) || Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale).replace(/\/$/, "");
+
+const navItems = [
+  { href: getRelativeLocaleUrl(Astro.currentLocale, '/'), text: 'Beverse' },
+  { href: getRelativeLocaleUrl(Astro.currentLocale, '/products'), text: 'Products' },
+  { href: getRelativeLocaleUrl(Astro.currentLocale, '/about'), text: 'About' },
+];
+
+const filteredNavItems = isHome ? navItems.slice(1) : navItems;
+---
+
+<header class="col-start-2 p-4 border-x border-border">
+  <div class={`max-w-[600px] mx-auto grid ${isHome ? 'grid-cols-3' : 'grid-cols-2'}`}>
+    <div class="flex gap-7">
+      <LanguageSwitcher />
+    </div>
+    {isHome && (
+      <img src="https://www.datocms-assets.com/150921/1740070520-.svg" alt="" />
+    )}
+    <nav>
+      <a href="/"></a>
+      <ul class="flex justify-center gap-4">
+        {filteredNavItems.map((item) => (
+          <li>
+            <a href={item.href} class="rounded-sm bg-card px-2 py-1 text-xs uppercase">
+              {item.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

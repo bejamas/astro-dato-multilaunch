@@ -1,0 +1,9 @@
+---
+import Line from './Line.astro';
+const { index, text } = Astro.props;
+
+---
+<Line />
+<h2 class="p-4 text-xs uppercase">
+  <span class="me-3 text-muted">{index} / {text}</span>
+</h2>
