@@ -23,15 +23,12 @@ const query = `
       name
       slug
       productType 
+      accentColor {
+        hex
+      }
       images {
-        responsiveImage(imgixParams: { fit: max, auto: format }) {
-          src
-          width
-          height
-          alt
-          title
-          base64
-        }
+        url
+        alt
       }
     }
     home {   

@@ -56,14 +56,11 @@ const query = `
             productType
             name
             images {
-              responsiveImage(imgixParams: { fit: max, auto: format }) {
-                src
-                width
-                height
-                alt
-                title
-                base64
-              }
+              url
+              alt                        
+            }
+            accentColor {
+              hex
             }
             slug
           }

@@ -7,7 +7,6 @@ import ReviewCard from '../../../components/ReviewCard.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import queryCMS from '../../../lib/cms';
 import { StructuredText } from '@datocms/astro';
-import { Image } from '@datocms/astro';
 import getAvailableLocales, { getFallbackLocale } from '../../../lib/i18n';
 
 export async function getStaticPaths() {
@@ -82,14 +81,8 @@ const query = `
         }
       }
       images {
-        responsiveImage(imgixParams: { w: 640, h: 330, fit: crop, auto: format }) {
-          src
-          width
-          height
-          alt
-          title
-          base64
-        }
+        url
+        alt                        
       }
       accentColor {
         hex
@@ -150,13 +143,11 @@ if (!brand) {
             />
           </div>
         </div>
-        
-        {brand.images && brand.images.length > 0 && (
-          <Image
-            data={brand.images[0].responsiveImage}
-            pictureClass="w-full"
-          />          
-        )}
+        <div class="bg-primary aspect-640/330">
+          {brand.images && brand.images.length > 0 && (
+            <img src={brand.images[0].url} alt={brand.images[0].alt} class="w-full h-full" />      
+          )}
+        </div>
       </div>
     </section>
 
