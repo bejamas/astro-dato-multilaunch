@@ -11,26 +11,28 @@ const navItems = [
 ];
 
 const filteredNavItems = isHome ? navItems.slice(1) : navItems;
+
+const { logo } = Astro.props;
 ---
 
 <header class="col-start-2 p-4 border-x border-border">
-  <div class={`max-w-[600px] mx-auto grid ${isHome ? 'grid-cols-3' : 'grid-cols-2'}`}>
-    <div class="flex gap-7">
-      <LanguageSwitcher />
+  <div class="grid grid-cols-2">
+    <img src={logo.url} alt={logo.alt} />
+    <div class="flex justify-end gap-4">
+      <nav>
+        <ul class="flex justify-end gap-4">
+          {filteredNavItems.map((item) => (
+            <li>
+              <a href={item.href} class="rounded-sm bg-card px-2 py-1 text-xs select-none uppercase">
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="flex gap-7">
+        <LanguageSwitcher />
+      </div>
     </div>
-    {isHome && (
-      <img src="https://www.datocms-assets.com/150921/1740070520-.svg" alt="" />
-    )}
-    <nav>
-      <ul class="flex justify-center gap-4">
-        {filteredNavItems.map((item) => (
-          <li>
-            <a href={item.href} class="rounded-sm bg-card px-2 py-1 text-xs select-none uppercase">
-              {item.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
   </div>
 </header>

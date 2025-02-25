@@ -18,6 +18,12 @@ const { locale } = Astro.params;
 
 const query = `
   query($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+    layout {
+      logo {
+        url
+        alt
+      }
+    }
     allBrands(locale: $locale, fallbackLocales: $fallbackLocale) {
       id
       name
@@ -41,16 +47,16 @@ const query = `
   }
 `;
 
-const { allBrands, home } = await queryCMS(query, { locale, fallbackLocale });
+const { allBrands, home, layout } = await queryCMS(query, { locale, fallbackLocale });
 
 ---
 
-<Layout additionalSeo={home._seoMetaTags}>
+<Layout additionalSeo={home._seoMetaTags} logo={layout.logo}>
   <section>
     <Heading index="01" text="Our brands" />      
     <Line />
     <div class="pt-6 px-4 pb-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         {allBrands.map((brand) => (
           <BrandCard brand={brand} />
         ))}

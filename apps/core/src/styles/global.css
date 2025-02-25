@@ -10,7 +10,7 @@
 }
 
 :root {
-  --outer-container-width: 675px;
+  --outer-container-width: 780px;
 }
 
 @theme {
@@ -65,8 +65,8 @@
   --color-card-foreground: hsl(260 12% 90%); /* Light gray text inside cards */
   
   /* Primary */
-  --color-primary: hsl(262 83% 58%); /* Deep blue for primary elements */
-  --color-primary-foreground: hsl(0 0% 100%); /* White for text/icons on primary */
+  --color-primary: hsl(255 11% 7%); /* Deep blue for primary elements */
+  --color-primary-foreground: hsl(260 12% 90%); /* White for text/icons on primary */
   
   /* Secondary */
   --color-secondary: hsl(239 84% 67%); /* Warm orange for secondary actions */

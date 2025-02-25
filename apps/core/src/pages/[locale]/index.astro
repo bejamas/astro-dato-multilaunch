@@ -21,6 +21,12 @@ const { locale } = Astro.params;
 
 const query = `
   query Query($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+    layout {
+      logo {
+        url
+        alt
+      }
+    }
     home(locale: $locale, fallbackLocales: $fallbackLocale) {
       _seoMetaTags {
         tag
@@ -93,10 +99,10 @@ const query = `
   }
 `;
 
-const { home } = await queryCMS(query, { locale, fallbackLocale });
+const { home, layout } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
-<Layout additionalSeo={home._seoMetaTags}>    
+<Layout additionalSeo={home._seoMetaTags} logo={layout.logo}>    
   {
     home.sections.map((item: any) => {
       switch (item._modelApiKey) {

@@ -39,6 +39,12 @@ const { locale, slug } = Astro.params;
 
 const query = `
   query GetBrandBySlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
+    layout {
+      logo {
+        url
+        alt
+      }
+    }
     brand(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
       name
       productType
@@ -119,20 +125,20 @@ const query = `
   }
 `;
 
-const { brand, contactForm } = await queryCMS(query, { slug, locale, fallbackLocale });
+const { brand, contactForm, layout } = await queryCMS(query, { slug, locale, fallbackLocale });
 
 if (!brand) {
   return Astro.redirect('/404');
 }
 ---
 
-<Layout additionalSeo={brand._seoMetaTags}>
+<Layout additionalSeo={brand._seoMetaTags} logo={layout.logo}>
   <div style={{ "--color-primary": brand.accentColor.hex }}>
     <section>
       <Heading index="01" text="home" />      
       <Line />
       <div class="pt-6 px-4 pb-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[600px] mx-auto mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
           <div>
             <div class="mb-3 text-xs uppercase">{brand.productType}</div>
             <h1 class="text-3xl">{brand.name}</h1>
