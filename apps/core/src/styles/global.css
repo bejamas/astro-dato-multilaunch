@@ -1,11 +1,22 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/RoobertMonoRegular.woff2")
+       format("woff2-variations");
+  font-weight: 1 999;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+}
+
 :root {
   --outer-container-width: 675px;
 }
 
 @theme {
-  --font-serif: "Geist Mono", serif;
+  --font-sans: "Roobert", sans-serif;
+  --font-mono: "Geist Mono";
+  
   --container-3xl: var(--outer-container-width);
  
   /* Base dark background */
