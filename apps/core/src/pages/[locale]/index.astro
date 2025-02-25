@@ -5,7 +5,7 @@ import queryCMS from '../../lib/cms';
 import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import Hero from '../../components/Hero.astro';
 import Heading from '../../components/Heading.astro';
-import ProductShowcase from '../../components/ProductShowcase.astro';
+import BrandShowcase from '../../components/BrandShowcase.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import Line from '../../components/Line.astro';
 
@@ -49,10 +49,10 @@ const query = `
             variant
           }
         }
-        ... on ProductsSectionRecord {
+        ... on BrandsSectionRecord {
           id
           _modelApiKey
-          products {
+          brands {
             productType
             name
             images {
@@ -110,8 +110,8 @@ const { home } = await queryCMS(query, { locale, fallbackLocale });
           );
         case 'hero_section':
           return <Hero hero={item} />;
-        case 'products_section':
-          return <ProductShowcase products={item} />;
+        case 'brands_section':
+          return <BrandShowcase brands={item} />;
         case 'contact_section':
           return <ContactForm form={item} />;
         default:

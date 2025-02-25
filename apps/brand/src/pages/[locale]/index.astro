@@ -28,8 +28,8 @@ const fallbackLocale = await getFallbackLocale();
 const { locale } = Astro.params;
 
 const query = `
-  query GetProductBySlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
-    product(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
+  query GetBrandBySlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
+    brand(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
       name
       productType
       featuresSubtitle
@@ -115,34 +115,34 @@ const query = `
   }
 `;
 
-const { product, contactForm } = await queryCMS(query, { slug: import.meta.env.BRAND_SLUG, locale, fallbackLocale });
+const { brand, contactForm } = await queryCMS(query, { slug: import.meta.env.BRAND_SLUG, locale, fallbackLocale });
 
-if (!product) {
+if (!brand) {
   return Astro.redirect('/404');
 }
 ---
 
-<Layout additionalSeo={product._seoMetaTags}>
-  <div style={{ "--color-primary": product.accentColor.hex }}>
+<Layout additionalSeo={brand._seoMetaTags}>
+  <div style={{ "--color-primary": brand.accentColor.hex }}>
     <section>
       <Heading index="01" text="home" />      
       <Line />
       <div class="pt-6 px-4 pb-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[600px] mx-auto mb-4">
           <div>
-            <div class="mb-3 text-xs uppercase">{product.productType}</div>
-            <h1 class="text-3xl">{product.name}</h1>
+            <div class="mb-3 text-xs uppercase">{brand.productType}</div>
+            <h1 class="text-3xl">{brand.name}</h1>
           </div>
           <div class="text-xs leading-5">
             <StructuredText
-              data={product.description}
+              data={brand.description}
             />
           </div>
         </div>
         
-        {product.images && product.images.length > 0 && (
+        {brand.images && brand.images.length > 0 && (
           <Image
-            data={product.images[0].responsiveImage}
+            data={brand.images[0].responsiveImage}
             pictureClass="w-full"
           />          
         )}
@@ -150,22 +150,22 @@ if (!product) {
     </section>
 
     <section>
-      <Heading index="02" text={'Why ' + product.name} />
+      <Heading index="02" text={'Why ' + brand.name} />
       <Line />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-4 pb-4">
         <div>
-          <div class="mt-6 mb-3 text-xs uppercase">{product.productType}</div>
-          <h2 class="mb-6 text-3xl">{product.featuresHeadline}</h2>
-          <div class="mb-6 text-xs leading-4">{product.featuresSubtitle}</div>
+          <div class="mt-6 mb-3 text-xs uppercase">{brand.productType}</div>
+          <h2 class="mb-6 text-3xl">{brand.featuresHeadline}</h2>
+          <div class="mb-6 text-xs leading-4">{brand.featuresSubtitle}</div>
           <div class="flex gap-4 mb-6">
-            {product.actions && product.actions.length > 0 && product.actions.map(action => (
+            {brand.actions && brand.actions.length > 0 && brand.actions.map(action => (
               <PrimaryButton label={action.label} slug={action.slug} variant={action.variant} />
             ))}
           </div>
         </div>
         
         <ul class="">
-          {product.features && product.features.length > 0 && product.features.map(feature => (
+          {brand.features && brand.features.length > 0 && brand.features.map(feature => (
             <li class="p-6">
               <a href="feature.url" class="flex justify-between align-center text-xs">
                 <span class="relative before:absolute before:content-[''] before:right-[calc(100%+8px)] before:top-0 before:bottom-0 before:m-auto before:h-6 before:w-1.5 before:bg-border">
@@ -185,7 +185,7 @@ if (!product) {
 
     <section>
       <Heading index="03" text="Testimonials" />
-      {product.reviews && product.reviews.reviews && product.reviews.reviews.length > 0 && product.reviews.reviews.map(review => (
+      {brand.reviews && brand.reviews.reviews && brand.reviews.reviews.length > 0 && brand.reviews.reviews.map(review => (
         <ReviewCard review={review} />
       ))}
     </section>
