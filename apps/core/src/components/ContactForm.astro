@@ -9,7 +9,7 @@ const { form } = Astro.props;
       <ul class="flex">
         {form.logos.map(logo => (
           <li class="px-4 py-2 border border-border">
-            <img width="48" src={logo.image.url} alt={logo.image.alt} />
+            <img width="48" src={logo.image.url} alt={logo.image.alt} class="select-none" />
           </li>
         ))}
       </ul>            
@@ -19,7 +19,7 @@ const { form } = Astro.props;
       <ul>
         <li>
           <a href="">
-            <img width="60" height="17" src={form.companyLogo.url} alt={form.companyLogo.alt}>
+            <img width="60" height="17" src={form.companyLogo.url} alt={form.companyLogo.alt} class="select-none" />
           </a>
         </li>
       </ul>            
@@ -28,17 +28,17 @@ const { form } = Astro.props;
   
   <form action={form.submitUrl}>
     <div class="pt-2 px-4 pb-4 bg-background border border-border">
-      <label for="email" class="block text-xs mb-1">{form.emailLabel}</label>
+      <label for="email" class="block text-xs mb-1 select-none">{form.emailLabel}</label>
       <input type="email" name="email" id="email" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.emailPlaceholder}>
     </div>
     
     <div class="pt-2 px-4 pb-4 bg-background border-l border-r border-border">
-      <label for="request" class="block text-xs mb-1">{form.messageLabel}</label>
+      <label for="request" class="block text-xs mb-1 select-none">{form.messageLabel}</label>
       <textarea name="request" id="request" rows="3" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.messagePlaceholder}></textarea>
     </div>
 
     <div class="pt-2 px-4 pb-4 bg-background border border-border">
-      <input type="submit" value={form.submitLabel} class="block w-full p-1.5 text-xs uppercase text-center bg-primary text-primary-foreground" />
+      <input type="submit" value={form.submitLabel} class="block w-full p-1.5 text-xs uppercase text-center bg-primary select-none text-primary-foreground" />
     </div>
   </form>
 </div>
