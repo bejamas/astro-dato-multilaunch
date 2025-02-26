@@ -1,16 +1,31 @@
 ---
+import queryCMS from '../lib/cms';
+import getAvailableLocales, { getFallbackLocale } from '../lib/i18n';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import LanguageSwitcher  from './LanguageSwitcher.astro';
 // exclude homepage link from nav in homepage. ( /fr || /fr/ ) checks for both with our without slash pathname.
 const isHome = Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale) || Astro.url.pathname === getRelativeLocaleUrl(Astro.currentLocale).replace(/\/$/, "");
 
-const navItems = [
-  { href: getRelativeLocaleUrl(Astro.currentLocale, '/'), text: 'Beverse' },
-  { href: getRelativeLocaleUrl(Astro.currentLocale, '/brands'), text: 'Brands' },
-  { href: getRelativeLocaleUrl(Astro.currentLocale, '/about'), text: 'About' },
-];
+const fallbackLocale = await getFallbackLocale();
+const { locale } = Astro.params;
 
-const filteredNavItems = isHome ? navItems.slice(1) : navItems;
+const query = `
+  query Query($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+    _site {
+      globalSeo {
+        siteName
+      }
+    }
+    layout(locale: $locale, fallbackLocales: $fallbackLocale) {
+      navLinks {
+        label
+        slug
+      }
+    }
+  }
+`;
+
+const { _site, layout } = await queryCMS(query, { locale, fallbackLocale });
 
 const { logo } = Astro.props;
 ---
@@ -21,10 +36,17 @@ const { logo } = Astro.props;
     <div class="flex justify-end gap-4">
       <nav>
         <ul class="flex justify-end gap-4">
-          {filteredNavItems.map((item) => (
+          {!isHome && (
             <li>
-              <a href={item.href} class="cta rounded-sm bg-card px-2 py-1 text-xs select-none uppercase">
-                {item.text}
+              <a href={getRelativeLocaleUrl(Astro.currentLocale, '/')} class="cta rounded-sm bg-card px-2 py-1 text-xs select-none uppercase">
+                {_site.globalSeo.siteName}                
+              </a>
+            </li>
+          )}
+          {layout.navLinks.map((item) => (
+            <li>
+              <a href={getRelativeLocaleUrl(Astro.currentLocale, `/${item.slug}`)} class="cta rounded-sm bg-card px-2 py-1 text-xs select-none uppercase">
+                {item.label}
               </a>
             </li>
           ))}
