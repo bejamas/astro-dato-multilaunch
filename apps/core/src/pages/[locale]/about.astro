@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import getAvailableLocales from '../../lib/i18n';
+import queryCMS from '../../lib/cms';
+import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import Heading from '../../components/Heading.astro';
 import Line from '../../components/Line.astro';
 
@@ -11,9 +12,24 @@ export async function getStaticPaths() {
   }));
 }
 
+const fallbackLocale = await getFallbackLocale();
+const { locale } = Astro.params;
+
+const query = `
+  query {
+    layout {
+      logo {
+        url
+        alt
+      }
+    }
+  }
+`;
+
+const { layout } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
-<Layout>
+<Layout logo={layout.logo}>    
   <section>
     <Heading index="01" text="About" />      
     <Line />
