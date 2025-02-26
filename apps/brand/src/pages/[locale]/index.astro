@@ -141,7 +141,7 @@ if (!brand) {
         
         <div class="aspect-640/330 bg-primary">
           {brand.images && brand.images.length > 0 && (
-            <img src={brand.images[0].url} alt={brand.images[0].alt} class="w-full h-full" />      
+            <img src={brand.images[0].url} alt={brand.images[0].alt} class="w-full h-full select-none" />      
           )}
         </div>
       </div>
@@ -165,16 +165,14 @@ if (!brand) {
         <ul class="">
           {brand.features && brand.features.length > 0 && brand.features.map(feature => (
             <li class="p-6">
-              <a href="feature.url" class="flex justify-between align-center text-xs">
+              <span class="flex justify-between align-center text-xs">
                 <span class="relative before:absolute before:content-[''] before:right-[calc(100%+8px)] before:top-0 before:bottom-0 before:m-auto before:h-6 before:w-1.5 before:bg-border">
                   {feature.label}
                 </span>
-                <span class="flex items-center justify-center w-5 h-5 rounded-xs border border-border">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M6.5 3L9.5 6L6.5 9M2.5 3L5.5 6L2.5 9" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <span class="flex items-center justify-center w-5 h-5 rounded-xs border border-border">            
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </span>
-              </a>
+              </span>
             </li>
           ))}
         </ul>
