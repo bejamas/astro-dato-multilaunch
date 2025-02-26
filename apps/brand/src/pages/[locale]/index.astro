@@ -92,8 +92,8 @@ const query = `
         content
       }           
     }
-    contactForm(locale: $locale, fallbackLocales: $fallbackLocale) {
-      ctaForm {
+    contactForm {
+      ctaForm(locale: $locale, fallbackLocales: $fallbackLocale) {
         title
         subtitle
         submitUrl
@@ -134,7 +134,7 @@ if (!brand) {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
           <div>
             <div class="mb-3 text-xs uppercase">{brand.productType}</div>
-            <h1 class="text-3xl">{brand.name}</h1>
+            <h1 class="text-3xl break-words">{brand.name}</h1>
           </div>
           <div class="text-xs leading-5">
             <StructuredText

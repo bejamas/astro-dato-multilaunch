@@ -33,7 +33,7 @@ const query = `
         attributes
         content
       }
-      sections {
+      sections(locale: $locale, fallbackLocales: $fallbackLocale) {
         ... on HeadingRecord {
           id
           _modelApiKey
