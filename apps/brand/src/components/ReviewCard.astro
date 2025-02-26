@@ -3,7 +3,9 @@ const { review } = Astro.props;
 ---
 
 <article class="max-w-[500px] mx-auto flex flex-col items-center gap-4 py-20">
-  <img src={review.avatar.url} alt={review.avatar.url} class="w-[70px] rounded-full filter saturate-0" />
+  {review.avatar && (    
+    <img src={review.avatar.url} alt={review.avatar.alt} class="w-[70px] rounded-full filter saturate-0" />
+  )}
   <h3 class="text-xs uppercase text-muted">[ {review.reviewerName} ]</h3>
   <p class="text-center leading-6">{review.body}</p>
 </article>
