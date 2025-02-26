@@ -14,7 +14,7 @@
 }
 
 @theme {
-  --font-sans: "Roobert", sans-serif;
+  --font-sans: "Open Sans", sans-serif;
   --font-mono: "Geist Mono";
   
   --container-3xl: var(--outer-container-width);
