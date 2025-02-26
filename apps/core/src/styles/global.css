@@ -92,3 +92,30 @@
   --color-ring: hsl(262 83% 58%); /* Matching primary for ring/focus outlines */
 }
  
+
+.cta {
+  position: relative;
+}
+
+.cta:before {
+  position: absolute;
+  inset: -6px;
+  content: "";
+  --s: 6px;
+  border: 1px solid var(--color-border); 
+  border-radius: 2px;
+  mask:
+    conic-gradient(#000 0 0) content-box,
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0) 
+    0 0/calc(100% - var(--s)) calc(100% - var(--s));  
+  transition: 0.3s cubic-bezier(.4,0,.2,1) all;
+  pointer-events: none;
+  opacity: 1;
+  transform: scale(0.5);
+  z-index: -1;
+}
+
+.cta:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
