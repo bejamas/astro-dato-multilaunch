@@ -56,6 +56,11 @@ const query = `
           url
         }
       }
+      brandName
+      brandLogo {
+        url
+        alt
+      }
       actions {
         ... on PrimaryButtonRecord {
           label
@@ -137,10 +142,10 @@ if (!brand) {
 }
 ---
 
-<Layout additionalSeo={brand._seoMetaTags} logo={layout.logo}>
+<Layout additionalSeo={brand._seoMetaTags} logo={brand.brandLogo}>
   <div style={{ "--color-primary": brand.accentColor.hex }}>
     <section>
-      <Heading index="01" text="" />      
+      <Heading index="01" text={brand.brandName} />      
       <Line />
       <div class="pt-6 px-4 pb-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
