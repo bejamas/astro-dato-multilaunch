@@ -14,10 +14,10 @@ const currentSlug = Astro.url.pathname;
 
 <div class="relative inline-block text-left">
   <div>
-    <button id="dropdowntoggle" type="button" class="inline-flex w-full justify-center items-center gap-x-1.5 rounded-sm bg-card px-2 py-1 text-xs select-none uppercase" id="menu-button" aria-expanded="true" aria-haspopup="true">
+    <button id="dropdowntoggle" type="button" class="cta inline-flex w-full justify-center items-center gap-x-1.5 rounded-sm bg-card px-2 py-1 text-xs select-none uppercase cursor-pointer" id="menu-button" aria-expanded="true" aria-haspopup="true">
       {Astro.currentLocale}
-      <svg class="-mr-1 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.26416 5.44195C5.11771 5.5884 4.88031 5.5884 4.73386 5.44195L0.910615 1.6187C0.76417 1.47225 0.76417 1.23485 0.910615 1.0884L1.0874 0.911595C1.23384 0.765145 1.47128 0.765145 1.61773 0.911595L4.99901 4.2929L8.38031 0.911595C8.52676 0.765145 8.76416 0.765145 8.91061 0.911595L9.08741 1.0884C9.23386 1.23485 9.23386 1.47225 9.08741 1.6187L5.26416 5.44195Z" />
       </svg>
     </button>
   </div>
