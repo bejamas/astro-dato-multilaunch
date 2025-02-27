@@ -64,6 +64,7 @@ const query = `
         }
       }      
       reviews {
+        title
         reviews {
           reviewerName
           reviewDate
@@ -139,7 +140,7 @@ if (!brand) {
 <Layout additionalSeo={brand._seoMetaTags} logo={layout.logo}>
   <div style={{ "--color-primary": brand.accentColor.hex }}>
     <section>
-      <Heading index="01" text="home" />      
+      <Heading index="01" text="" />      
       <Line />
       <div class="pt-6 px-4 pb-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
@@ -162,7 +163,7 @@ if (!brand) {
     </section>
 
     <section>
-      <Heading index="02" text={'Why ' + brand.name} />
+      <Heading index="02" text={brand.name} />
       <Line />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-4 pb-4">
         <div>
@@ -194,7 +195,7 @@ if (!brand) {
     </section>
 
     <section>
-      <Heading index="03" text="Testimonials" />
+      <Heading index="03" text={brand.reviews.title} />
       {brand.reviews && brand.reviews.reviews && brand.reviews.reviews.length > 0 && brand.reviews.reviews.map(review => (
         <ReviewCard review={review} />
       ))}
