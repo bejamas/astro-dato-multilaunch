@@ -1,13 +1,6 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Roobert";
-  src: url("/fonts/RoobertMonoRegular.woff2")
-       format("woff2-variations");
-  font-weight: 1 999;
-  font-display: swap;
-  unicode-range: U+000-5FF;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --outer-container-width: 780px;
@@ -55,7 +48,7 @@
 
 }
 
-@theme {
+.dark {
   /* Base dark background */
   --color-background: hsl(252 56% 2%); /* Dark background */
   --color-foreground: hsl(260 12% 90%); /* Light gray for text/icons */
@@ -118,4 +111,16 @@
 .cta:hover::before {
   opacity: 1;
   transform: scale(1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
