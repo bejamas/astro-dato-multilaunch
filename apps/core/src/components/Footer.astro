@@ -26,7 +26,7 @@ const query = `
 const { _site, layout } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
-<footer class="col-start-1 -col-end-1 bg-[repeating-linear-gradient(-32deg,transparent_0px,transparent_6px,var(--color-border)_6px,var(--color-border)_12px)]">
+<footer class="col-start-1 -col-end-1 bg-[repeating-linear-gradient(-32deg,transparent_0px,transparent_6px,#f2f2f2_6px,#f2f2f2_12px)] dark:bg-[repeating-linear-gradient(-32deg,transparent_0px,transparent_6px,#161616_6px,#161616_12px)]">
   <div class="flex justify-between gap-6 items-center max-w-3xl mx-auto p-4 border-x border-border">
     <p class="text-xs uppercase">&copy; {new Date().getFullYear()} {_site.globalSeo.siteName}. {layout.copyrightText}</p>
     <div>

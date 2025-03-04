@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Line from '../components/Line.astro'
 import queryCMS from '../lib/cms';
 import { Seo } from '@datocms/astro';
 import '../styles/global.css';
@@ -43,12 +44,13 @@ const { additionalSeo = [], logo } = Astro.props;
       --outer-container-width: ${theme.webpageWidth}px;
       --font-sans: ${theme.font};`
     }
-    class="font-sans bg-background text-foreground bg-[url('data:image/svg+xml,%3Csvg%20width%3D%221197%22%20height%3D%221197%22%20viewBox%3D%220%200%201197%201197%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%22598.5%22%20cy%3D%22598.5%22%20r%3D%22597.5%22%20stroke%3D%22%232727271f%22/%3E%3C/svg%3E')] bg-[center_top_3.75rem] bg-no-repeat selection:bg-primary"
+    class="font-sans bg-background text-foreground bg-[url('data:image/svg+xml,%3Csvg%20width%3D%221197%22%20height%3D%221197%22%20viewBox%3D%220%200%201197%201197%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20opacity%3D%220.4%22%20cx%3D%22598.5%22%20cy%3D%22598.5%22%20r%3D%22597.5%22%20stroke%3D%22%232727271f%22/%3E%3C/svg%3E')] bg-[center_top_3.75rem] bg-no-repeat selection:bg-primary"
   >
     <div class="grid min-h-screen grid-rows-[auto_1fr_auto] grid-cols-[minmax(1em,1fr)_minmax(0,var(--outer-container-width))_minmax(1em,1fr)]">
       <Header logo={logo} />
-      <main class="col-start-2 border-x border-border">
+      <main class="col-start-2 bg-background border-x border-border">
         <slot />
+        <Line />
       </main>
       <Footer />
     </div>

@@ -12,77 +12,33 @@
   
   --container-3xl: var(--outer-container-width);
  
-  /* Base dark background */
-  --color-background: hsl(0deg 0% 98.04%); /* Dark background */
-  --color-foreground: hsl(0deg 0% 13.73%); /* High contrast for text/icons */
+  --color-background: #FAFAFA;
+  --color-foreground: #272727;
  
-  /* Card */
-  --color-card: hsl(0deg 0% 92.55%); /* Slightly lighter than background for cards */
+  --color-card: #F0F0F0;
   --color-card-foreground: var(--color-foreground);
  
-  /* Primary */
-  --color-primary: hsl(0deg 0% 13.73%); /* Vibrant violet for standout elements */
-  --color-primary-foreground: white; /* High-contrast white for text/icons on primary */
- 
-  /* Secondary */
-  --color-secondary: red; /* Softer blue for secondary actions */
-  --color-secondary-foreground: red; /* High-contrast white */
- 
-  /* Muted */
-  --color-muted: hsl(0deg 0% 14% / 40%); /* Subdued gray for less prominent elements */
- 
-  /* Accent */
-  --color-accent: red; /* Bright green for accents (e.g., success or highlights) */
-  --color-accent-foreground: red; /* High-contrast white */
- 
-  /* Destructive */
-  --color-destructive: 0 84% 60%; /* Vivid red for errors or destructive actions */
-  --color-destructive-foreground: 0 0% 100%; /* White for clarity */
- 
-  /* Borders and inputs */
-  --color-border: hsl(0deg 0% 15.29% / 12%); /* Neutral dark border color */
-  --color-input: red; /* Matches muted for input backgrounds */
- 
-  /* Ring (focus outlines) */
-  --color-ring: red; /* Matches primary for visual consistency */
+  --color-primary: #272727;
+  --color-primary-foreground: #ffffff;
 
+  --color-muted: #a6a6a6;
+
+  --color-border: #E3E3E3;
 }
 
 .dark {
-  /* Base dark background */
-  --color-background: hsl(252 56% 2%); /* Dark background */
-  --color-foreground: hsl(260 12% 90%); /* Light gray for text/icons */
-   
-  /* Card */
-  --color-card: hsl(255 11% 7%); /* Dark card background */
-  --color-card-foreground: hsl(260 12% 90%); /* Light gray text inside cards */
-  
-  /* Primary */
-  --color-primary: hsl(255 11% 7%); /* Deep blue for primary elements */
-  --color-primary-foreground: hsl(260 12% 90%); /* White for text/icons on primary */
-  
-  /* Secondary */
-  --color-secondary: hsl(239 84% 67%); /* Warm orange for secondary actions */
-  --color-secondary-foreground: hsl(); /* White for text/icons on secondary */
-  
-  /* Muted */
-  --color-muted: hsl(240 6% 25%); /* Darker muted gray for less prominent elements */
-  --color-muted-foreground: hsl(240 11% 67%);
+  --color-background: #0A0A0A;
+  --color-foreground: #ffffff;
+ 
+  --color-card: #1E1E1E;
+  --color-card-foreground: var(--color-foreground);
+ 
+  --color-primary: #ffffff;
+  --color-primary-foreground: #0A0A0A;
 
-  /* Accent */
-  --color-accent: hsl(142 71% 45%); /* Green for accents (e.g., success) */
-  --color-accent-foreground: hsl(0 0% 100%); /* White for text/icons on accents */
-  
-  /* Destructive */
-  --color-destructive: hsl(0 84% 60%); /* Bright red for errors or destructive actions */
-  --color-destructive-foreground: hsl(0 0% 100%); /* White for clarity */
-  
-  /* Borders and inputs */
-  --color-border: hsl(240 8% 17%); /* Subtle borders with a dark tint */
-  --color-input: hsl(240 6% 25%); /* Dark input background */
-  
-  /* Ring (focus outlines) */
-  --color-ring: hsl(262 83% 58%); /* Matching primary for ring/focus outlines */
+  --color-muted: #6c6c6c;
+
+  --color-border: #272727;
 }
  
 
