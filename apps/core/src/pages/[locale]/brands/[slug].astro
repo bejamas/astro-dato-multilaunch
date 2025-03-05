@@ -39,12 +39,6 @@ const { locale, slug } = Astro.params;
 
 const query = `
   query GetBrandBySlug($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
-    layout {
-      logo {
-        url
-        alt
-      }
-    }
     brand(locale: $locale, fallbackLocales: $fallbackLocale, filter: { slug: { eq: $slug } }) {
       name
       productType
@@ -58,6 +52,10 @@ const query = `
       }
       brandName
       brandLogo {
+        url
+        alt
+      }      
+      brandLogoDark {
         url
         alt
       }
@@ -142,7 +140,7 @@ if (!brand) {
 }
 ---
 
-<Layout additionalSeo={brand._seoMetaTags} logo={brand.brandLogo}>
+<Layout additionalSeo={brand._seoMetaTags} logos={[brand.brandLogo, brand.brandLogoDark]}>
   <div style={{ "--color-primary": brand.accentColor.hex }}>
     <section>
       <Heading index="01" text={brand.brandName} />      

@@ -22,6 +22,10 @@ const query = `
         url
         alt
       }
+      logoDark {
+        url
+        alt
+      }
     }
   }
 `;
@@ -29,7 +33,7 @@ const query = `
 const { layout } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
-<Layout logo={layout.logo}>    
+<Layout logos={[layout.logo, layout.logoDark]}>    
   <section>
     <Heading index="01" text="About" />      
     <Line />

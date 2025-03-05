@@ -27,12 +27,15 @@ const query = `
 
 const { _site, layout } = await queryCMS(query, { locale, fallbackLocale });
 
-const { logo } = Astro.props;
+const [ logo, logoDark ] = Astro.props.logos;
 ---
 
 <header class="col-start-2 p-4 border-x border-border">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-    <img src={logo.url} alt={logo.alt} width="220" class="select-none" />
+    <img src={logo.url} alt={logo.alt} width="220" class={`select-none ${ logoDark ? "dark:hidden" : ""}`} />
+    {logoDark && (
+      <img src={logoDark.url} alt={logoDark.alt} width="220" class="select-none hidden dark:block" />      
+    )}
     <div class="flex justify-end gap-4">
       <nav>
         <ul class="flex justify-end gap-4">

@@ -26,6 +26,10 @@ const query = `
         url
         alt
       }
+      logoDark {
+        url
+        alt
+      }
     }
     home(locale: $locale, fallbackLocales: $fallbackLocale) {
       _seoMetaTags {
@@ -102,7 +106,7 @@ const query = `
 const { home, layout } = await queryCMS(query, { locale, fallbackLocale });
 ---
 
-<Layout additionalSeo={home._seoMetaTags} logo={layout.logo}>    
+<Layout additionalSeo={home._seoMetaTags} logos={[layout.logo, layout.logoDark]}>    
   {
     home.sections.map((item: any) => {
       switch (item._modelApiKey) {
