@@ -81,3 +81,7 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+.opacity-100 {
+  opacity: 1 !important;
+}

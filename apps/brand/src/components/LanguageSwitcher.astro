@@ -5,13 +5,6 @@ const fallbackLocale = await getFallbackLocale();
 const currentSlug = Astro.url.pathname;
 ---
 
-<script>
-  document.getElementById("dropdowntoggle").addEventListener("click", function() {
-      const dropdown = document.getElementById("dropdown");
-      dropdown.classList.toggle("hidden");
-  });
-</script>
-
 <div class="relative inline-block text-left">
   <div>
     <button id="dropdowntoggle" type="button" class="cta inline-flex w-full justify-center items-center gap-x-1.5 rounded-sm bg-card px-2 py-1 text-xs select-none uppercase cursor-pointer" id="menu-button" aria-expanded="true" aria-haspopup="true">
