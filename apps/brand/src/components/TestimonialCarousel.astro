@@ -1,0 +1,114 @@
+---
+import ReviewCard from './ReviewCard.astro';
+
+const { reviews } = Astro.props;
+---
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get carousel elements
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevButton = document.querySelector('.carousel-prev');
+    const nextButton = document.querySelector('.carousel-next');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
+    let currentSlide = 0;
+    
+    // Initialize the carousel
+    function initCarousel() {
+      // Show the first slide
+      slides[currentSlide].classList.add('opacity-100');
+      indicators[currentSlide].classList.add('bg-primary');
+      
+      // Add event listeners
+      prevButton.addEventListener('click', prevSlide);
+      nextButton.addEventListener('click', nextSlide);
+      
+      // Add indicator click events
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToSlide(index));
+      });
+    }
+    
+    // Go to a specific slide
+    function goToSlide(index) {
+      // Hide current slide
+      slides[currentSlide].classList.remove('opacity-100');
+      indicators[currentSlide].classList.remove('bg-primary');
+      
+      // Update current slide index
+      currentSlide = index;
+      
+      // If we've gone past the last slide, go back to the first
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      }
+      
+      // If we've gone before the first slide, go to the last
+      if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+      }
+      
+      // Show new current slide
+      slides[currentSlide].classList.add('opacity-100');
+      indicators[currentSlide].classList.add('bg-primary');
+    }
+    
+    // Go to the next slide
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+    
+    // Go to the previous slide
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+    
+    // Initialize the carousel
+    initCarousel();
+  });
+</script>
+
+<svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="star" viewBox="0 0 24 24" fill="currentColor" class="stroke-amber-400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+    </polygon>
+  </symbol>
+</svg>
+
+<div class="overflow-hidden pb-20">
+  <!-- Slides -->
+  <div class="carousel-slides grid grid-cols-1">
+    {reviews.reviews.map(review => (    
+      <div class="carousel-slide col-span-full row-span-full opacity-0 transition-opacity duration-250 ease-in-out">
+        <ReviewCard review={review} />
+      </div>
+    ))}
+  </div>
+  
+  <!-- Control Buttons -->
+  {reviews.reviews.length > 1 && (
+    <div class="flex max-w-[100px] mx-auto gap-4 justify-center items-center">
+      <button class="carousel-prev block w-[20px] h-[20px] border border-border rounded-xs flex justify-center items-center cursor-pointer" aria-label="Previous slide">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M5.51465 3L2.51465 6L5.51465 9M9.51465 3L6.51465 6L9.51465 9" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>      
+      </button>
+      
+      <div class="carousel-indicators flex justify-center space-x-1.5">
+        {reviews.reviews.map((_, index) => (
+          <button 
+            class="carousel-indicator w-[4px] h-[4px] bg-muted hover:bg-opacity-75 rotate-[45deg] cursor-pointer" 
+            aria-label={`Go to slide ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+
+      <button class="carousel-next w-[20px] h-[20px] border border-border rounded-xs flex justify-center items-center cursor-pointer" aria-label="Next slide">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M7.48511 3L10.4851 6L7.48511 9M3.48511 3L6.48511 6L3.48511 9" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>      
+      </button>
+    </div>
+  )}
+</div>

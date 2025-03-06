@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PrimaryButton from '../../components/PrimaryButton.astro';
 import Heading from '../../components/Heading.astro';
 import Line from '../../components/Line.astro';
-import ReviewCard from '../../components/ReviewCard.astro';
+import TestimonialCarousel from '../../../components/TestimonialCarousel.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import queryCMS from '../../lib/cms';
 import { StructuredText } from '@datocms/astro';
@@ -189,12 +189,12 @@ if (!brand) {
       </div>
     </section>
 
-    <section>
-      <Heading index="03" text={brand.reviews.title} />
-      {brand.reviews && brand.reviews.reviews && brand.reviews.reviews.length > 0 && brand.reviews.reviews.map(review => (
-        <ReviewCard review={review} />
-      ))}
-    </section>
+    {brand.reviews && brand.reviews.reviews && brand.reviews.reviews.length > 0 && (
+      <section>
+        <Heading index="03" text={brand.reviews.title} />
+        <TestimonialCarousel reviews={brand.reviews} />
+      </section>
+    )}
 
     <section>
       <Heading index="04" text="CTA" />
