@@ -41,16 +41,13 @@
   --color-border: #272727;
 }
  
-
-.cta {
-  position: relative;
-  z-index: 1;
+.corner-effect {
+ position: relative;
 }
 
-.cta:before {
+.corner {
   position: absolute;
   inset: -6px;
-  content: "";
   --s: 6px;
   border: 1px solid var(--color-border); 
   border-radius: 2px;
@@ -60,17 +57,16 @@
     0 0/calc(100% - var(--s)) calc(100% - var(--s));  
   transition: 0.3s cubic-bezier(.4,0,.2,1) all;
   pointer-events: none;
-  opacity: 1;
+  opacity: 0;
   transform: scale(0.5);
-  z-index: -1;
 }
 
-.cta:hover::before {
-  opacity: 1;
+.corner-effect:hover .corner {
   transform: scale(1);
+  opacity: 1;
 }
 
-.sr-only {
+@utility sr-only {
   position: absolute;
   width: 1px;
   height: 1px;

@@ -41,15 +41,17 @@ const [ logo, logoDark ] = Astro.props.logos;
         <ul class="flex justify-end gap-4">
           {!isHome && (
             <li>
-              <a href={getRelativeLocaleUrl(Astro.currentLocale, '/')} class="cta rounded-sm bg-card px-2 py-1 text-xs select-none uppercase">
-                {_site.globalSeo.siteName}                
+              <a href={getRelativeLocaleUrl(Astro.currentLocale, '/')} class="corner-effect select-none ">
+                <span class="corner"></span>                                
+                <span class="relative z-10 block rounded-sm bg-card px-2 py-1 text-xs uppercase">{_site.globalSeo.siteName}</span>
               </a>
             </li>
           )}
           {layout.navLinks.map((item) => (
             <li>
-              <a href={getRelativeLocaleUrl(Astro.currentLocale, `/${item.slug}`)} class="cta rounded-sm bg-card px-2 py-1 text-xs select-none uppercase">
-                {item.label}
+              <a href={getRelativeLocaleUrl(Astro.currentLocale, `/${item.slug}`)} class="corner-effect select-none">
+                <span class="corner"></span>                
+                <span class="relative z-10 block rounded-sm bg-card px-2 py-1 text-xs uppercase">{item.label}</span>
               </a>
             </li>
           ))}
