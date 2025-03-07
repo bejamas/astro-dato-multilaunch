@@ -94,6 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const prevButton = document.querySelector('.carousel-prev');
   const nextButton = document.querySelector('.carousel-next');
   const indicators = document.querySelectorAll('.carousel-indicator');
+
+  if (slides.length < 2) {
+    return;
+  }
   
   let currentSlide = 0;
   

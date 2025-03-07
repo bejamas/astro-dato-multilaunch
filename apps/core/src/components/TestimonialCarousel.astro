@@ -12,17 +12,19 @@ const { reviews } = Astro.props;
 </svg>
 
 <div class="overflow-hidden pb-20">
-  <!-- Slides -->
-  <div class="carousel-slides grid grid-cols-1">
-    {reviews.reviews.map(review => (    
-      <div class="carousel-slide col-span-full row-span-full opacity-0 transition-opacity duration-250 ease-in-out">
-        <ReviewCard review={review} />
-      </div>
-    ))}
-  </div>
+  {reviews.reviews.length === 1 && (
+    <ReviewCard review={reviews.reviews[0]} />
+  )}
   
-  <!-- Control Buttons -->
+  <!-- If we have more than one reviews carousel loads -->
   {reviews.reviews.length > 1 && (
+    <div class="carousel-slides grid grid-cols-1">
+      {reviews.reviews.map(review => (    
+        <div class="carousel-slide col-span-full row-span-full opacity-0 transition-opacity duration-250 ease-in-out">
+          <ReviewCard review={review} />
+        </div>
+      ))}
+    </div>
     <div class="flex max-w-[100px] mx-auto gap-4 justify-center items-center">
       <button class="carousel-prev block w-[20px] h-[20px] border border-border rounded-xs flex justify-center items-center cursor-pointer" aria-label="Previous slide">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
