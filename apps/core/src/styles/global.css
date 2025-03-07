@@ -43,6 +43,7 @@
  
 .corner-effect {
  position: relative;
+ display: inline-block;
 }
 
 .corner {
