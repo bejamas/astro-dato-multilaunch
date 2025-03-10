@@ -1,0 +1,8 @@
+---
+const { images, width, height } = Astro.props;
+---
+<img src={images.lightModeImage.url} alt={images.lightModeImage.alt} class={`select-none ${ images.darkModeImage ? "dark:hidden" : ""}`} width={width} height={height} />
+
+{images.darkModeImage && (
+  <img src={images.darkModeImage.url} alt={images.darkModeImage.alt} class="select-none hidden dark:block" width={width} height={height} />  
+)}
