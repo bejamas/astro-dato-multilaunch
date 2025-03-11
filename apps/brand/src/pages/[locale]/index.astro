@@ -139,8 +139,8 @@ if (!brand) {
 }
 ---
 
-<Layout additionalSeo={brand._seoMetaTags} logos={[brand.brandLogo, brand.brandLogoDark]}>
-  <div style={{ "--color-primary": brand.accentColor.hex }}>
+<Layout additionalSeo={brand._seoMetaTags} logos={[brand.brandLogo, brand.brandLogoDark]} primaryColor={brand.accentColor.hex}>
+  <div>
     <section>
       <Heading index="01" text={brand.brandName} />      
       <Line />
