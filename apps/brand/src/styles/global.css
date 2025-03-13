@@ -82,3 +82,44 @@
 .opacity-100 {
   opacity: 1 !important;
 }
+
+.product-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 0%, transparent 50%, var(--color-card) 60%, var(--color-card));
+  transition: transform 300ms ease-in-out;
+  z-index: 1;
+}
+
+.product-card:hover .product-overlay {
+  transform: scale(1.2);
+}
+
+.product-pattern {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 90%;
+  height: 90%;
+  z-index: 0;
+}
+
+.product-card .product-pattern .lines {
+  stroke: var(--color-border);
+  transition: all 300ms ease-in-out;
+}
+
+.product-card .product-pattern .joins {
+  fill: var(--color-border);
+  transition: all 300ms ease-in-out;
+}
+
+.product-card:hover .product-pattern .lines {
+  stroke: var(--color-primary);
+  opacity: .4;
+}
+
+.product-card:hover .product-pattern .joins {
+  fill: var(--color-primary);
+  opacity: .4;
+}
