@@ -83,12 +83,18 @@
   opacity: 1 !important;
 }
 
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+
 .product-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle, transparent 0%, transparent 50%, var(--color-card) 60%, var(--color-card));
   transition: transform 300ms ease-in-out;
   z-index: 1;
+  user-select: none;
 }
 
 .product-card:hover .product-overlay {
@@ -99,9 +105,9 @@
   position: absolute;
   inset: 0;
   margin: 0;
-  width: 90%;
-  height: 90%;
   z-index: 0;
+  user-select: none;
+  margin: auto;
 }
 
 .product-card .product-pattern .lines {
