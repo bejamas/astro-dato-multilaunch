@@ -4,7 +4,7 @@ const { brand } = Astro.props;
 
 ---
 
-<article style={{ "--color-primary": brand.accentColor.hex }} class="relative bg-primary">
+<article style={{ "--color-primary": brand.accentColor.hex }} class="relative bg-card hover:bg-[var(--color-primary)]  transition-colors duration-300 ease-in-out">
   <a class="absolute inset-0 flex flex-col justify-between p-6" href={getRelativeLocaleUrl(Astro.currentLocale, `/brands/${brand.slug}`)}>   
     <h3 class="text-base">{brand.name}</h3>
     <span class="text-sm uppercase">{brand.productType}</span>
