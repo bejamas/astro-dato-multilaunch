@@ -6,6 +6,7 @@ import Line from '../../../components/Line.astro';
 import TestimonialCarousel from '../../../components/TestimonialCarousel.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import queryCMS from '../../../lib/cms';
+import DraftModeQueryListener from '../../../components/DraftModeQueryListener.astro';
 import { StructuredText } from '@datocms/astro';
 import getAvailableLocales, { getFallbackLocale } from '../../../lib/i18n';
 
@@ -239,4 +240,6 @@ if (!brand) {
       <ContactForm form={contactForm.ctaForm} />
     </section>
   </div>
+
+  <DraftModeQueryListener query={query} />
 </Layout>

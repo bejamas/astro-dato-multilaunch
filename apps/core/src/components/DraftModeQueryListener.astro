@@ -1,0 +1,25 @@
+---
+import { QueryListener } from '@datocms/astro/QueryListener';
+const token = import.meta.env.DATOCMS_API_TOKEN;
+// import { isDraftModeEnabled } from '~/lib/draftMode';
+
+// const draftModeEnabled = isDraftModeEnabled(Astro.cookies);
+---
+
+{
+  // draftModeEnabled && (
+  //   <QueryListener
+  //     {...Astro.props}
+  //     token={DATOCMS_DRAFT_CONTENT_CDA_TOKEN}
+  //     excludeInvalid
+  //     includeDrafts
+  //   />
+  // )
+
+
+  <QueryListener
+      {...Astro.props}
+      token={token}
+      excludeInvalid
+    />
+}
