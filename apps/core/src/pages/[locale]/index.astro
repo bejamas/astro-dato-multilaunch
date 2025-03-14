@@ -25,10 +25,14 @@ const query = `
       logo {
         url
         alt
+        width
+        height
       }
       logoDark {
         url
         alt
+        width
+        height
       }
     }
     home(locale: $locale, fallbackLocales: $fallbackLocale) {
@@ -67,7 +71,9 @@ const query = `
             name
             images {
               url
-              alt                        
+              alt
+              width
+              height
             }
             accentColor {
               hex
@@ -88,10 +94,14 @@ const query = `
             darkModeImage {
               alt
               url
+              width
+              height
             }
             lightModeImage {
               alt
               url
+              width
+              height
             }
           }
           emailPlaceholder
@@ -101,10 +111,14 @@ const query = `
             darkModeImage {
               alt
               url
+              width
+              height
             }
             lightModeImage {
               alt
               url
+              width
+              height
             }
           }
         }

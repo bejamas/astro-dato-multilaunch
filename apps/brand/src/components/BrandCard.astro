@@ -11,6 +11,6 @@ const { brand } = Astro.props;
     <span class="text-sm uppercase">{brand.productType}</span>
   </a>
   {brand.images && brand.images[0] && (
-    <img src={brand.images[0].url} alt={brand.images[0].alt} class="relative z-10 w-full select-none" />
+    <img src={brand.images[0].url} alt={brand.images[0].alt} width={brand.images[0].width} height={brand.images[0].height} class="relative z-10 w-full select-none" />
   )}    
 </article>

@@ -5,5 +5,6 @@ const { index, text } = Astro.props;
 ---
 <Line />
 <h2 class="p-4 text-xs uppercase font-mono">
-  <span class="me-3"><span class="text-muted">{index} / </span>{text}</span>
+  <span class="text-muted me-2" aria-hidden="true">{index} /</span>
+  {text}
 </h2>

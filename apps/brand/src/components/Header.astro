@@ -32,9 +32,9 @@ const [ logo, logoDark ] = Astro.props.logos;
 
 <header class="col-start-2 p-4 border-x border-border">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-    <img src={logo.url} alt={logo.alt} width="220" class={`select-none ${ logoDark ? "dark:hidden" : ""}`} />
+    <img src={logo.url} alt={logo.alt} width={logo.width} height={logo.height} class={`select-none w-[220px] ${ logoDark ? "dark:hidden" : ""}`} />
     {logoDark && (
-      <img src={logoDark.url} alt={logoDark.alt} width="220" class="select-none hidden dark:block" />      
+      <img src={logoDark.url} alt={logoDark.alt} width={logo.width} height={logo.height} class="select-none w-[220px] hidden dark:block" />      
     )}
     <div class="flex justify-end gap-4">
       <nav>

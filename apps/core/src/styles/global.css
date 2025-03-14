@@ -64,7 +64,7 @@
 
 .corner-effect:hover .corner {
   transform: scale(1);
-  opacity: 1;
+  opacity: 0.5;
 }
 
 @utility sr-only {
