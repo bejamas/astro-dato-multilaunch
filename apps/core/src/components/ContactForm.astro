@@ -8,7 +8,7 @@ const { form } = Astro.props;
       <h2 class="text-2xl">{form.title}</h2>
       <div class="text-xs leading-4">{form.subtitle}</div>
       <div class="flex">
-        <ul class="flex">          
+        <ul class="flex flex-wrap">          
           {form.logos.map(logo => (
             <li class="px-4 py-2 border border-border">
               <ImageWithDarkMode images={logo} width="48" />

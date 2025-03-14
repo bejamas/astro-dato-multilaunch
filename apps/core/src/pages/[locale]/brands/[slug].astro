@@ -203,11 +203,9 @@ if (!brand) {
           <div class="mt-6 mb-3 text-xs uppercase">{brand.productType}</div>
           <h2 class="mb-6 text-3xl">{brand.featuresHeadline}</h2>
           <div class="mb-6 text-xs leading-4">{brand.featuresSubtitle}</div>
-          <div class="flex gap-4 mb-6">
+          <div class="flex flex-wrap gap-4 mb-6">
             {brand.actions && brand.actions.length > 0 && brand.actions.map(action => (
-              <div>
-                <PrimaryButton label={action.label} slug={action.slug} variant={action.variant} />
-              </div>
+              <PrimaryButton label={action.label} slug={action.slug} variant={action.variant} />              
             ))}
           </div>
         </div>
