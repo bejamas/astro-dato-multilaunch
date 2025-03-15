@@ -2,6 +2,7 @@
 import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro';
 import queryCMS from '../../lib/cms';
+import DraftModeQueryListener from '../../components/DraftModeQueryListener.astro';
 import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import Hero from '../../components/Hero.astro';
 import Heading from '../../components/Heading.astro';
@@ -149,5 +150,7 @@ const { home, layout } = await queryCMS(query, { locale, fallbackLocale });
           return null;
       }
     })
-  }   
+  }
+
+  <DraftModeQueryListener query={query} />
 </Layout>

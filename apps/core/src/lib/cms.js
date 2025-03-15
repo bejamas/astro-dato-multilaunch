@@ -14,7 +14,7 @@ export default async function queryCMS(query, variables = {}) {
       {
         token,
         variables,
-        includeDrafts: false
+        includeDrafts: true
       });
       
     return result;

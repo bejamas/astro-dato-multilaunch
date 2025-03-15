@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import queryCMS from '../../lib/cms';
+import DraftModeQueryListener from '../../components/DraftModeQueryListener.astro';
 import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
 import Heading from '../../components/Heading.astro';
 import Line from '../../components/Line.astro';
@@ -42,4 +43,6 @@ const { layout } = await queryCMS(query, { locale, fallbackLocale });
       <p class="text-xs leading-5">A fast, clean template for retail companies with multiple brands. Built with Astro's high-performance framework and DatoCMS's flexible content management, BeVerse makes it easy to showcase different products across your brand portfolio. Each brand gets its own landing page with product info, features, and customer reviews—all in a consistent design that supports multiple languages out of the box. Brand pages can be easily customized with unique colors and themes directly from the CMS, allowing each brand to maintain its identity while staying within your corporate framework.</p>      
     </div>
   </section>      
+
+  <DraftModeQueryListener query={query} />
 </Layout>
