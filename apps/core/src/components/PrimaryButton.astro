@@ -1,7 +1,7 @@
 ---
-const { label, slug, variant } = Astro.props;
+const { label, url, variant } = Astro.props;
 ---
-<a href={slug} class="corner-effect select-none">
+<a href={url} class="corner-effect select-none">
   <span class="corner"></span>
   <span class={`relative z-10 block px-4 py-2 text-xs whitespace-nowrap uppercase ${variant === "primary" ? "bg-primary text-primary-foreground" : "bg-background text-foreground border border-border"}`}>{label}</span>
 </a>

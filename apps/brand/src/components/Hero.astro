@@ -11,7 +11,7 @@ const { hero } = Astro.props;
       <h2 class="text-4xl break-words">{hero.heroTitle}</h2>      
       <div class="flex flex-wrap gap-4 mb-6">
         {hero.ctas && hero.ctas.length > 0 && hero.ctas.map(cta => (
-          <PrimaryButton label={cta.label} slug={cta.slug} variant={cta.variant} />          
+          <PrimaryButton label={cta.label} url={cta.url} variant={cta.variant} />          
         ))}
       </div>
     </div>

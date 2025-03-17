@@ -67,7 +67,7 @@ const query = `
       actions {
         ... on PrimaryButtonRecord {
           label
-          slug
+          url
           variant
         }
       }      
@@ -206,7 +206,7 @@ if (!brand) {
           <div class="mb-6 text-xs leading-4">{brand.featuresSubtitle}</div>
           <div class="flex flex-wrap gap-4 mb-6">
             {brand.actions && brand.actions.length > 0 && brand.actions.map(action => (
-              <PrimaryButton label={action.label} slug={action.slug} variant={action.variant} />              
+              <PrimaryButton label={action.label} url={action.url} variant={action.variant} />              
             ))}
           </div>
         </div>
