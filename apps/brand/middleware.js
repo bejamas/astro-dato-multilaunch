@@ -1,8 +1,10 @@
-export default function middleware(request) {
+import { NextResponse } from 'next/server'
+
+export function middleware(request) {
   // Get the country code from Vercel's headers
   const country = request.headers.get("x-vercel-ip-country") || "US"
 
-    const countryToLanguage = {
+  const countryToLanguage = {
     US: "en",
     GB: "en",
     AU: "en",
@@ -26,10 +28,10 @@ export default function middleware(request) {
     !pathname.match(/\.(ico|png|jpg|jpeg|svg|css|js)$/)
   ) {
     // Redirect to the localized version
-    return Response.redirect(new URL(`/${language}${pathname}`, request.url))
+    return NextResponse.redirect(new URL(`/${language}${pathname}`, request.url))
   }
 
-  return Response.next()
+  return NextResponse.next()
 }
 
 // Configure the middleware to run on specific paths
@@ -39,4 +41,3 @@ export const config = {
     "/((?!_astro|api|.*\\.).*)",
   ],
 }
-
