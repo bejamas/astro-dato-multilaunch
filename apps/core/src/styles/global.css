@@ -40,6 +40,16 @@
 
   --color-border: #272727;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
  
 .corner-effect {
  position: relative;
@@ -64,7 +74,7 @@
 
 .corner-effect:hover .corner {
   transform: scale(1);
-  opacity: 0.5;
+  opacity: 1;
 }
 
 @utility sr-only {
