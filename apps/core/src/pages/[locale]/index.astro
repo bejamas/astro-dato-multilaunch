@@ -145,7 +145,11 @@ const { home, layout } = await queryCMS(query, { locale, fallbackLocale });
         case 'brands_section':
           return <BrandShowcase brands={item} />;
         case 'contact_section':
-          return <ContactForm form={item} />;
+          return (
+            <div id="contact">
+              <ContactForm form={item} />
+            </div>
+          );
         default:
           return null;
       }
