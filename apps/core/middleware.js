@@ -1,43 +1,28 @@
-import { NextResponse } from 'next/server'
-
-export function middleware(request) {
-  // Get the country code from Vercel's headers
-  const country = request.headers.get("x-vercel-ip-country") || "US"
-
-  const countryToLanguage = {
-    US: "en",
-    GB: "en",
-    AU: "en",
-    FR: "fr",
-    DE: "de",
-    NL: "nl",
-  }
-
-  const language = countryToLanguage[country] || "en"
+export default function middleware(request) {
   const url = new URL(request.url)
-  const pathname = url.pathname
-
-  // Check if the URL already has a language prefix
-  const hasLanguagePrefix = /^\/(en|nl|fr|de)\/?/.test(pathname)
-
-  // If there's no language prefix and it's not a static asset or API route
-  if (
-    !hasLanguagePrefix &&
-    !pathname.startsWith("/_astro/") &&
-    !pathname.startsWith("/api/") &&
-    !pathname.match(/\.(ico|png|jpg|jpeg|svg|css|js)$/)
-  ) {
-    // Redirect to the localized version
-    return NextResponse.redirect(new URL(`/${language}${pathname}`, request.url))
+  const country = request.geo?.country || 'US'
+  
+  // Map countries to languages
+  const countryToLocale = {
+    'DE': 'de',
+    'FR': 'fr',
+    'Nl': 'nl',
+    'US': 'en', // Default
+    'GB': 'en',
+    'AU': "en",
+  }
+  
+  const locale = countryToLocale[country] || 'en'
+  
+  // If user is on the homepage, redirect to localized version
+  if (url.pathname === '/' || url.pathname === '/index.html') {
+    return Response.redirect(new URL(`/${locale}${url.pathname}`, request.url))
   }
 
-  return NextResponse.next()
+  // Continue for already localized paths
+  return Response.next()
 }
 
-// Configure the middleware to run on specific paths
 export const config = {
-  matcher: [
-    // Match all paths except static files and API routes
-    "/((?!_astro|api|.*\\.).*)",
-  ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
 }
