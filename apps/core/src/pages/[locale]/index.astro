@@ -8,6 +8,7 @@ import Hero from '../../components/Hero.astro';
 import Heading from '../../components/Heading.astro';
 import BrandShowcase from '../../components/BrandShowcase.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import ContactFormVertical from '../../components/ContactFormVertical.astro';
 import Line from '../../components/Line.astro';
 
 export async function getStaticPaths() {
@@ -85,6 +86,7 @@ const query = `
         ... on ContactSectionRecord {
           id
           _modelApiKey
+          displayOptions
           title
           subtitle
           submitUrl
@@ -144,12 +146,14 @@ const { home, layout } = await queryCMS(query, { locale, fallbackLocale });
           return <Hero hero={item} />;
         case 'brands_section':
           return <BrandShowcase brands={item} />;
-        case 'contact_section':
-          return (
-            <div id="contact">
-              <ContactForm form={item} />
-            </div>
-          );
+        case 'contact_section': {
+          switch (item.displayOptions) {
+            case 'vertical_form':
+              return <ContactFormVertical form={item} />;
+            default:
+              return <ContactForm form={item} />;
+          }
+        }
         default:
           return null;
       }

@@ -1,0 +1,46 @@
+---
+import ImageWithDarkMode from './ImageWithDarkMode.astro';
+const { form } = Astro.props;
+---
+<div class="p-3">
+  <div class="bg-card">
+    <div class="max-w-[488px] m-auto p-6 space-y-4">
+      <h2 class="text-2xl text-center">{form.title}</h2>
+      <div class="text-xs leading-4 text-center max-w-[250px] mx-auto">{form.subtitle}</div>
+      <form action={form.submitUrl} id="contactform">
+        <div class="pt-2 px-4 pb-4 bg-background border border-border">
+          <label for="email" class="block text-xs mb-1 select-none">{form.emailLabel}</label>
+          <input type="email" name="email" id="email" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.emailPlaceholder}>
+        </div>
+        
+        <div class="pt-2 px-4 pb-4 bg-background border-l border-r border-border">
+          <label for="request" class="block text-xs mb-1 select-none">{form.messageLabel}</label>
+          <textarea name="request" id="request" rows="3" class="block w-full min-w-0 text-base placeholder:text-muted focus:outline-none" placeholder={form.messagePlaceholder}></textarea>
+        </div>
+
+        <div class="pt-2 px-4 pb-4 bg-background border border-border">
+          <input type="submit" value={form.submitLabel} class="block w-full p-1.5 text-xs uppercase text-center bg-primary select-none text-primary-foreground" />
+        </div>
+      </form>
+      <div class="flex justify-center">
+        <ul class="flex flex-wrap">          
+          {form.logos.map(logo => (
+            <li class="px-4 py-2 border border-border">
+              <ImageWithDarkMode images={logo} width="48" />
+            </li>
+          ))}
+        </ul>            
+      </div>
+      <p class="text-xs text-center">{form.companyTitle}</p>
+      <div class="flex justify-center">
+        <ul>
+          <li>
+            <a href="">
+              <ImageWithDarkMode images={form.companyLogo} width="60" height="17" />
+            </a>
+          </li>
+        </ul>            
+      </div>
+    </div>
+  </div>
+</div>

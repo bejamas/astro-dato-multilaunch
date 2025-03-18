@@ -5,6 +5,7 @@ import Heading from '../../components/Heading.astro';
 import Line from '../../components/Line.astro';
 import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import ContactFormVertical from '../../components/ContactFormVertical.astro';
 import queryCMS from '../../lib/cms';
 import DraftModeQueryListener from '../../components/DraftModeQueryListener.astro';
 import { StructuredText } from '@datocms/astro';
@@ -109,6 +110,7 @@ const query = `
     }
     contactForm {
       ctaForm(locale: $locale, fallbackLocales: $fallbackLocale) {
+        displayOptions
         title
         subtitle
         submitUrl
@@ -223,11 +225,19 @@ if (!brand) {
         <TestimonialCarousel reviews={brand.reviews} />
       </section>
     )}
-
-    <section id="contact">
+    <section>
       <Heading index="04" text="CTA" />
-      <ContactForm form={contactForm.ctaForm} />
-    </section>
+      {
+        (() => {
+          switch (contactForm.ctaForm.displayOptions) {
+            case 'vertical_form':
+              return <ContactFormVertical form={contactForm.ctaForm} />;
+            default:
+              return <ContactForm form={contactForm.ctaForm} />;
+          }
+        })()
+      }
+    </section>    
   </div>
 
   <DraftModeQueryListener query={query} />
