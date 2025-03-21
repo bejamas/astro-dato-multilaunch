@@ -9,6 +9,7 @@
 		"astro": "astro"
 	},
 	"dependencies": {
+    "@beverse/ui": "workspace:*",
 		"@astrojs/vercel": "^8.0.2",
 		"@datocms/astro": "^0.4.1",
 		"@datocms/cda-client": "^0.2.5",

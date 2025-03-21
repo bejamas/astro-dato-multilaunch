@@ -1,15 +1,14 @@
 ---
-import "../../styles/global.css";
-import Layout from '../../layouts/Layout.astro';
-import queryCMS from '../../lib/cms';
-import DraftModeQueryListener from '../../components/DraftModeQueryListener.astro';
-import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
-import Hero from '../../components/Hero.astro';
-import Heading from '../../components/Heading.astro';
-import BrandShowcase from '../../components/BrandShowcase.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import ContactFormVertical from '../../components/ContactFormVertical.astro';
-import Line from '../../components/Line.astro';
+import Layout from '@beverse/ui/layout';
+import queryCMS from '@beverse/ui/cms';
+import DraftModeQueryListener from '@beverse/ui/draft-mode-query-listener';
+import getAvailableLocales, { getFallbackLocale } from '@beverse/ui/i18n';
+import Hero from '@beverse/ui/hero';
+import Heading from '@beverse/ui/heading';
+import Line from '@beverse/ui/line';
+import BrandShowcase from '@beverse/ui/brand-showcase';
+import ContactForm from '@beverse/ui/contact-form';
+import ContactFormVertical from '@beverse/ui/contact-form-vertical';
 
 export async function getStaticPaths() {
   const availableLocales = await getAvailableLocales();  

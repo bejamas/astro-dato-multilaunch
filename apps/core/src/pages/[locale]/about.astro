@@ -1,10 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import queryCMS from '../../lib/cms';
-import DraftModeQueryListener from '../../components/DraftModeQueryListener.astro';
-import getAvailableLocales, { getFallbackLocale } from '../../lib/i18n';
-import Heading from '../../components/Heading.astro';
-import Line from '../../components/Line.astro';
+import Layout from '@beverse/ui/layout';
+import queryCMS from '@beverse/ui/cms';
+import DraftModeQueryListener from '@beverse/ui/draft-mode-query-listener';
+import getAvailableLocales, { getFallbackLocale } from '@beverse/ui/i18n';
+import Heading from '@beverse/ui/heading';
+import Line from '@beverse/ui/line';
 
 export async function getStaticPaths() {
   const availableLocales = await getAvailableLocales();  
