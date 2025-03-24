@@ -89,10 +89,6 @@ html {
   border-width: 0;
 }
 
-.opacity-100 {
-  opacity: 1 !important;
-}
-
 .product-card {
   position: relative;
   overflow: hidden;
