@@ -20,7 +20,7 @@ export const onRequest = (context) => {
   let locale = DEFAULT_LOCALE
   if (['fr', 'be', 'ch'].includes(country)) {
     locale = 'fr'
-  } else if (['de', 'at', 'ch'].includes(country)) {
+  } else if (['de', 'at', 'ch', 'pl'].includes(country)) {
     locale = 'de'
   } else if (['cn', 'hk', 'tw'].includes(country)) {
     locale = 'zh'
