@@ -1,14 +1,22 @@
 {
-	"name": "beverse",
-	"workspaces": ["apps/*", "packages/*"],
-	"private": true,
-	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev",
-		"lint": "turbo run lint"
-	},
-	"devDependencies": {
-		"turbo": "latest"
-	},
-	"packageManager": "bun@1.2.5"
+  "name": "beverse",
+  "workspaces": ["apps/*", "packages/*"],
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "8.1.3",
+    "@datocms/astro": "^0.4.1",
+    "@datocms/cda-client": "^0.2.5",
+    "@tailwindcss/vite": "^4.0.1",
+    "astro": "5.5.4",
+    "tailwindcss": "^4.0.1"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  },
+  "packageManager": "bun@1.2.5"
 }
