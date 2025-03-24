@@ -6,6 +6,8 @@ import Heading from '@beverse/ui/heading';
 import Line from '@beverse/ui/line';
 import BrandCard from '@beverse/ui/brand-card';
 
+import '../../../styles/style.css';
+
 export async function getStaticPaths() {
   const availableLocales = await getAvailableLocales();  
   return availableLocales.map(locale => ({

@@ -6,6 +6,8 @@ import getAvailableLocales, { getFallbackLocale } from '@beverse/ui/i18n';
 import Heading from '@beverse/ui/heading';
 import Line from '@beverse/ui/line';
 
+import '../../styles/style.css';
+
 export async function getStaticPaths() {
   const availableLocales = await getAvailableLocales();  
   return availableLocales.map(locale => ({
