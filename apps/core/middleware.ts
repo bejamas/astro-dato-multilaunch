@@ -1,9 +1,9 @@
-export const onRequest = (context) => {
+export default function middleware(request: Request) {
   const SUPPORTED_LOCALES = ['en', 'fr', 'de', 'zh', 'ar']
   const DEFAULT_LOCALE = 'en'
 
   // Get the pathname of the request
-  const url = new URL(context.request.url)
+  const url = new URL(request.url)
   const pathname = url.pathname
 
   // Check if the pathname already starts with a locale
@@ -11,10 +11,10 @@ export const onRequest = (context) => {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
-  if (pathnameHasLocale) return context.next()
+  if (pathnameHasLocale) return;
 
   // Get user's country from Vercel geo data
-  const country = context.request.headers.get('x-vercel-ip-country')?.toLowerCase() || ''
+  const country = request.headers.get('x-vercel-ip-country')?.toLowerCase() || ''
 
   // Map countries to locales (extend this mapping as needed)
   let locale = DEFAULT_LOCALE
@@ -36,4 +36,8 @@ export const onRequest = (context) => {
     }
   })
 }
+
+export const config = {
+  matcher: '/:path*',
+};
 
