@@ -27,8 +27,7 @@
     "./theme-switcher": "./src/components/ThemeSwitcher.astro",
     "./draft-mode-query-listener": "./src/components/DraftModeQueryListener.astro",
     "./cms": "./src/lib/cms.js",
-    "./i18n": "./src/lib/i18n.js",
-    "./global": "./src/styles/global.css"
+    "./i18n": "./src/lib/i18n.js"
   },
 	"dependencies": {
 		"@astrojs/vercel": "^8.0.2",

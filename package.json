@@ -10,5 +10,5 @@
 	"devDependencies": {
 		"turbo": "latest"
 	},
-	"packageManager": "bun@1.1.10"
+	"packageManager": "bun@1.2.5"
 }
