@@ -38,6 +38,12 @@ export default function middleware(request: Request) {
 }
 
 export const config = {
-  matcher: '/:path*',
+  matcher: [
+    /*
+     * Match all request paths except for those with file extensions
+     * This will only match page routes and exclude static files
+     */
+    '/((?!.*\\.).*)' // Match paths that don't contain a period (file extension)
+  ],
 };
 
