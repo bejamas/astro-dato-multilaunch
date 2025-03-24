@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@source "../../../../packages/ui";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --outer-container-width: 780px;
+}
+
+@theme {
+  --font-sans: "Open Sans", sans-serif;
+  --font-mono: "Geist Mono";
+  
+  --container-3xl: var(--outer-container-width);
+ 
+  --color-background: #FAFAFA;
+  --color-foreground: #272727;
+ 
+  --color-card: #F0F0F0;
+  --color-card-foreground: var(--color-foreground);
+ 
+  --color-primary: #272727;
+  --color-primary-foreground: #ffffff;
+
+  --color-muted: #a6a6a6;
+
+  --color-border: #E3E3E3;
+}
+
+.dark {
+  --color-background: #0A0A0A;
+  --color-foreground: #ffffff;
+ 
+  --color-card: #141414;
+  --color-card-foreground: var(--color-foreground);
+ 
+  --color-primary: #ffffff;
+  --color-primary-foreground: #0A0A0A;
+
+  --color-muted: #6c6c6c;
+
+  --color-border: #272727;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+ 
+.corner-effect {
+ position: relative;
+ display: inline-block;
+}
+
+.corner {
+  position: absolute;
+  inset: -4px;
+  --s: 6px;
+  border: 1px solid var(--color-primary); 
+  border-radius: 2px;
+  mask:
+    conic-gradient(#000 0 0) content-box,
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0) 
+    0 0/calc(100% - var(--s)) calc(100% - var(--s));  
+  transition: 0.2s cubic-bezier(.4,0,.2,1) all;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.corner-effect:hover .corner {
+  transform: scale(1);
+  opacity: 1;
+}
+
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.opacity-100 {
+  opacity: 1 !important;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 0%, transparent 50%, var(--color-card) 60%, var(--color-card));
+  transition: transform 300ms ease-in-out;
+  z-index: 1;
+  user-select: none;
+}
+
+.product-card:hover .product-overlay {
+  transform: scale(1.2);
+}
+
+.product-pattern {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  z-index: 0;
+  user-select: none;
+  margin: auto;
+}
+
+.product-card .product-pattern .lines {
+  stroke: var(--color-border);
+  transition: all 300ms ease-in-out;
+}
+
+.product-card .product-pattern .joins {
+  fill: var(--color-border);
+  transition: all 300ms ease-in-out;
+}
+
+.product-card:hover .product-pattern .lines {
+  stroke: var(--color-primary);
+  opacity: .4;
+}
+
+.product-card:hover .product-pattern .joins {
+  fill: var(--color-primary);
+  opacity: .4;
+}

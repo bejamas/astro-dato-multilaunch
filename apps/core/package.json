@@ -9,13 +9,13 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-    "@beverse/ui": "workspace:*",
 		"@astrojs/vercel": "^8.0.2",
+		"@beverse/ui": "workspace:*",
 		"@datocms/astro": "^0.4.1",
 		"@datocms/cda-client": "^0.2.5",
-		"@tailwindcss/vite": "^4.0.1",
+		"@tailwindcss/vite": "^4.0.15",
 		"astro": "^5.2.1",
-		"tailwindcss": "^4.0.1"
+		"tailwindcss": "^4.0.15"
 	},
 	"devDependencies": {
 		"turbo": "^2.4.2"
