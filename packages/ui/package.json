@@ -13,6 +13,7 @@
     "./header": "./src/components/Header.astro",
     "./footer": "./src/components/Footer.astro",
     "./brand-card": "./src/components/BrandCard.astro",
+    "./brand-showcase": "./src/components/BrandShowcase.astro",
     "./contact-form": "./src/components/ContactForm.astro",
     "./contact-form-vertical": "./src/components/ContactFormVertical.astro",
     "./heading": "./src/components/Heading.astro",
