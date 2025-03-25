@@ -1,6 +1,6 @@
 # BeVerse: Multi-Brand Retail Template
 
-![BeVerse Template Preview](https://www.datocms-assets.com/150921/1742896314-template-preview.jpg)
+![BeVerse Template Preview](https://www.datocms-assets.com/150921/1742896702-template-preview.png)
 
 A monorepo Astro and DatoCMS theme designed for retail companies to showcase multiple brands and products with ease.
 
