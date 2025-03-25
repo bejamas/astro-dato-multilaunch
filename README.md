@@ -1,48 +1,73 @@
-# Astro Starter Kit: Basics
+# BeVerse: Multi-Brand Retail Template
 
-```sh
-npm create astro@latest -- --template basics
+A monorepo Astro and DatoCMS theme designed for retail companies to showcase multiple brands and products with ease.
+
+## Demo
+[Live Demo](https://astro-dato-beverse.vercel.app/en/)
+
+## Tech Stack
+- Astro
+- DatoCMS
+- Tailwind CSS 4
+
+## Features
+- ✅ Seamless multilingual support
+- ✅ AI-powered translation
+- ✅ Multi-tenancy brand management
+- ✅ Customizable brand themes (dark/light)
+- ✅ Geo-redirects
+- ✅ Easy color and font customization
+- ✅ Rapid brand page deployment
+
+## 🚦 Quick Start
+1. Create an account on DatoCMS
+2. Set up GitHub integration on Vercel
+3. Let DatoCMS set up your project:
+
+[Deploy to DatoCMS]()
+
+## 🛠 Local Setup
+
+### Prerequisites
+- Node.js
+- Bun
+
+### Project Structure
+```
+beverse/
+├── apps/
+│   ├── core/       # Main retail company page
+│   └── brands/     # Brand landing pages
+└── packages/
+    └── ui/         # Shared UI components
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Getting Started
+```bash
+# Install dependencies
+bun install
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Product Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+# Set up environment variables
+cp .env.example .env
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Environment Variables
+1. Go to DatoCMS project Settings
+2. Navigate to API tokens
+3. Copy Read-only API token
+4. Paste into `.env` file
 
-## 🧞 Commands
+## Available Scripts
+```bash
+# Run development server
+bun dev
 
-All commands are run from the root of the project, from a terminal:
+# Build for production
+bun run build
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Preview production build
+bun run preview
+```
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Contributing
+Contributions are welcome!
