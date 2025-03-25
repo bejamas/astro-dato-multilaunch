@@ -8,7 +8,7 @@
   "environmentVariables": {
     "DATOCMS_API_TOKEN": {
       "type": "datocmsAccessToken",
-      "tokenName": "Read-only API token"
+      "tokenName": "DATOCMS_API_TOKEN"
     }
   },
   "buildCommand": "bun run build"
