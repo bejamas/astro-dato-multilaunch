@@ -1,0 +1,15 @@
+{
+  "name": "BeVerse: Multi-Brand Retail Template",
+  "description": "A multi-language Astro and DatoCMS theme designed for retail companies to showcase multiple brands and products with ease.",
+  "previewImage": "https://www.datocms-assets.com/150921/1742896702-template-preview.png",
+  "livePreviewUrl": "https://astro-dato-beverse.vercel.app/",
+  "datocmsProjectId": "150921",
+  "deploymentType": "static",
+  "environmentVariables": {
+    "DATOCMS_API_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "Read-only API token"
+    }
+  },
+  "buildCommand": "bun run build"
+}
