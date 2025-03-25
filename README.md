@@ -26,7 +26,7 @@ A monorepo Astro and DatoCMS theme designed for retail companies to showcase mul
 2. Set up GitHub integration on Vercel
 3. Let DatoCMS set up your project:
 
-[Deploy to DatoCMS]()
+[![Clone DatoCMS project](https://dashboard.datocms.com/clone/button.svg)](https://dashboard.datocms.com/deploy?repo=bejamas%2Fastro-dato-beverse)
 
 ## Local Setup
 
