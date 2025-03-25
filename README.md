@@ -14,10 +14,10 @@ A monorepo Astro and DatoCMS theme designed for retail companies to showcase mul
 - ✅ Seamless multilingual support
 - ✅ AI-powered translation
 - ✅ Multi-tenancy brand management
-- ✅ Customizable brand themes (dark/light)
 - ✅ Geo-redirects
-- ✅ Easy color and font customization
 - ✅ Rapid brand page deployment
+- ✅ Dark & light mode
+- ✅ Brand-specific color selection
 
 ## Quick Start
 1. Create an account on DatoCMS
