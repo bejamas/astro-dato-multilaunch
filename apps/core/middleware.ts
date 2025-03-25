@@ -1,5 +1,5 @@
 export default function middleware(request: Request) {
-  const SUPPORTED_LOCALES = ['en', 'fr', 'de', 'zh', 'ar']
+  const SUPPORTED_LOCALES = ['en', 'fr', 'de', 'nl', 'pl']
   const DEFAULT_LOCALE = 'en'
 
   // Get the pathname of the request
@@ -20,8 +20,10 @@ export default function middleware(request: Request) {
   let locale = DEFAULT_LOCALE
   if (['fr', 'be', 'ch'].includes(country)) {
     locale = 'fr'
-  } else if (['de', 'at', 'ch', 'pl'].includes(country)) {
+  } else if (['de', 'at', 'ch'].includes(country)) {
     locale = 'de'
+  } else if (['pl'].includes(country)) {
+    locale = 'pl'
   } else if (['cn', 'hk', 'tw'].includes(country)) {
     locale = 'zh'
   } else if (['sa', 'ae', 'eg', 'iq', 'jo', 'kw', 'lb', 'om', 'qa', 'sy'].includes(country)) {
