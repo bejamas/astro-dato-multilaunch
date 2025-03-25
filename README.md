@@ -11,22 +11,22 @@ A monorepo Astro and DatoCMS theme designed for retail companies to showcase mul
 - Tailwind CSS 4
 
 ## Features
-- ✅ Seamless multilingual support
-- ✅ AI-powered translation
-- ✅ Multi-tenancy brand management
-- ✅ Customizable brand themes (dark/light)
-- ✅ Geo-redirects
-- ✅ Easy color and font customization
-- ✅ Rapid brand page deployment
+✅ Seamless multilingual support
+✅ AI-powered translation
+✅ Multi-tenancy brand management
+✅ Customizable brand themes (dark/light)
+✅ Geo-redirects
+✅ Easy color and font customization
+✅ Rapid brand page deployment
 
-## 🚦 Quick Start
+## Quick Start
 1. Create an account on DatoCMS
 2. Set up GitHub integration on Vercel
 3. Let DatoCMS set up your project:
 
 [Deploy to DatoCMS]()
 
-## 🛠 Local Setup
+## Local Setup
 
 ### Prerequisites
 - Node.js
