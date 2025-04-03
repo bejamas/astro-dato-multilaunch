@@ -1,12 +1,12 @@
 # MultiLaunch: Multi-Brand Website Template
 
-![BeVerse Template Preview](https://www.datocms-assets.com/150921/1742896702-template-preview.png)
+![MultiLaunch Template Preview](https://www.datocms-assets.com/150921/1742896702-template-preview.png)
 
 A high-performance monorepo template built with Astro & DatoCMS for managing multiple brands effortlessly.
 Ideal for startups and mid-sized retailers needing a scalable, cost-effective, and multi-language brand hierarchy.
 
 ## Demo
-[Live Demo](https://astro-dato-beverse.vercel.app/en/)
+[Live Demo](https://astro-dato-multilaunch.vercel.app/en/)
 
 ## Tech Stack
 - Astro
@@ -27,7 +27,7 @@ Ideal for startups and mid-sized retailers needing a scalable, cost-effective, a
 2. Deploy on Vercel with GitHub Integration
 3. Let DatoCMS set up your project:
 
-[![Clone DatoCMS project](https://dashboard.datocms.com/clone/button.svg)](https://dashboard.datocms.com/deploy?repo=bejamas%2Fastro-dato-beverse)
+[![Clone DatoCMS project](https://dashboard.datocms.com/clone/button.svg)](https://dashboard.datocms.com/deploy?repo=bejamas%2Fastro-dato-multilaunch)
 
 ## Local Setup
 
@@ -37,7 +37,7 @@ Ideal for startups and mid-sized retailers needing a scalable, cost-effective, a
 
 ### Project Structure
 ```
-beverse/
+multilaunch/
 ├── apps/
 │   ├── core/       # Main retail company page
 │   └── brands/     # Brand landing pages

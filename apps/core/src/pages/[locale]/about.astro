@@ -1,10 +1,10 @@
 ---
-import Layout from '@beverse/ui/layout';
-import queryCMS from '@beverse/ui/cms';
-import DraftModeQueryListener from '@beverse/ui/draft-mode-query-listener';
-import getAvailableLocales, { getFallbackLocale } from '@beverse/ui/i18n';
-import Heading from '@beverse/ui/heading';
-import Line from '@beverse/ui/line';
+import Layout from '@multilaunch/ui/layout';
+import queryCMS from '@multilaunch/ui/cms';
+import DraftModeQueryListener from '@multilaunch/ui/draft-mode-query-listener';
+import getAvailableLocales, { getFallbackLocale } from '@multilaunch/ui/i18n';
+import Heading from '@multilaunch/ui/heading';
+import Line from '@multilaunch/ui/line';
 
 import '../../styles/style.css';
 
@@ -41,8 +41,8 @@ const { layout } = await queryCMS(query, { locale, fallbackLocale });
     <Heading index="01" text="About" />      
     <Line />
     <div class="p-8">
-      <h1 class="text-4xl mb-4">BeVerse: Multi-Brand Retail Template</h1>
-      <p class="text-base leading-7">A fast, clean template for retail companies with multiple brands. Built with <mark class="bg-gradient-to-r from-[#d83333] to-[#f041ff] bg-clip-text text-transparent">Astro</mark>'s high-performance framework and <mark class="bg-gradient-to-r from-[#ff593d] to-[#f4cf58] bg-clip-text text-transparent">DatoCMS</mark>'s flexible content management, BeVerse makes it easy to showcase different products across your brand portfolio. Each brand gets its own landing page with product info, features, and customer reviews—all in a consistent design that supports multiple languages out of the box. Brand pages can be easily customized with unique colors and themes directly from the CMS, allowing each brand to maintain its identity while staying within your corporate framework.</p>      
+      <h1 class="text-4xl mb-4">MultiLaunch: Multi-Brand Retail Template</h1>
+      <p class="text-base leading-7">A fast, clean template for retail companies with multiple brands. Built with <mark class="bg-gradient-to-r from-[#d83333] to-[#f041ff] bg-clip-text text-transparent">Astro</mark>'s high-performance framework and <mark class="bg-gradient-to-r from-[#ff593d] to-[#f4cf58] bg-clip-text text-transparent">DatoCMS</mark>'s flexible content management, MultiLaunch makes it easy to showcase different products across your brand portfolio. Each brand gets its own landing page with product info, features, and customer reviews—all in a consistent design that supports multiple languages out of the box. Brand pages can be easily customized with unique colors and themes directly from the CMS, allowing each brand to maintain its identity while staying within your corporate framework.</p>      
       <h2 class="text-2xl mt-10 mb-4">Seamless Multilingual Support</h2>
       <p class="text-base leading-7">Expand your reach globally with built-in language support. With DatoCMS's AI translator plugin, editors can translate entire layouts with just one click. No developer intervention required—simply select your target language and watch your content transform for international markets.</p>
       <h2 class="text-2xl mt-10 mb-4">Rapid Brand Expansion</h2>

@@ -1,5 +1,5 @@
 {
-  "name": "beverse",
+  "name": "multilaunch",
   "workspaces": ["apps/*", "packages/*"],
   "private": true,
   "scripts": {
