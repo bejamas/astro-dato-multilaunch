@@ -1,8 +1,9 @@
-# BeVerse: Multi-Brand Retail Template
+# MultiLaunch: Multi-Brand Website Template
 
 ![BeVerse Template Preview](https://www.datocms-assets.com/150921/1742896702-template-preview.png)
 
-A monorepo Astro and DatoCMS theme designed for retail companies to showcase multiple brands and products with ease.
+A high-performance monorepo template built with Astro & DatoCMS for managing multiple brands effortlessly.
+Ideal for startups and mid-sized retailers needing a scalable, cost-effective, and multi-language brand hierarchy.
 
 ## Demo
 [Live Demo](https://astro-dato-beverse.vercel.app/en/)
@@ -13,17 +14,17 @@ A monorepo Astro and DatoCMS theme designed for retail companies to showcase mul
 - Tailwind CSS 4
 
 ## Features
-- ✅ Seamless multilingual support
-- ✅ AI-powered translation
-- ✅ Multi-tenancy brand management
-- ✅ Geo-redirects
-- ✅ Rapid brand page deployment
-- ✅ Dark & light mode
-- ✅ Brand-specific color selection
+- ✅ Multi-Brand Architecture – One main site, multiple brand landing pages
+- ✅ Rapid Deployment – Add a new brand in minutes, not weeks
+- ✅ Monorepo Setup – All brands in one repository for easy management
+- ✅ AI-Powered Translation – Multi-language support with AI-assisted translations
+- ✅ Geo-Redirects – Serve region-specific content automatically
+- ✅ Brand-Specific Customization – Each brand gets its own colors and assets
+- ✅ Dark & Light Mode
 
 ## Quick Start
 1. Create an account on DatoCMS
-2. Set up GitHub integration on Vercel
+2. Deploy on Vercel with GitHub Integration
 3. Let DatoCMS set up your project:
 
 [![Clone DatoCMS project](https://dashboard.datocms.com/clone/button.svg)](https://dashboard.datocms.com/deploy?repo=bejamas%2Fastro-dato-beverse)
