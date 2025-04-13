@@ -1,6 +1,6 @@
 # MultiLaunch: Multi-Brand Website Template
 
-![MultiLaunch Template Preview](https://www.datocms-assets.com/150921/1742896702-template-preview.png)
+![MultiLaunch Template Preview](https://www.datocms-assets.com/150921/1743700109-multi-launch.png)
 
 A high-performance monorepo template built with Astro & DatoCMS for managing multiple brands effortlessly.
 Ideal for startups and mid-sized retailers needing a scalable, cost-effective, and multi-language brand hierarchy.
